@@ -1,5 +1,5 @@
-baseURL = "http://example.org/"
-languageCode = "en-us"
+baseURL = "/"
+languageCode = "zh-cn"
 title = "后会有期"
 theme="ling"
 paginate = 10
@@ -10,7 +10,10 @@ titleCaseStyle = "Go"
   post = "/:year/:month/:day/:title/"
 [params]
   themeColor = "theme-cyan"
-  description = "青山不改，绿水长流"
+  keywords = "Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关"
+  description = "基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等"
+  subTitle = "青山不改，绿水长流 carpe diem"
+  qrcode = "/img/qrcode.jpg"
 [Menus]
   main = [
       {Name = "Github", URL = "https://github.com/jangworn/"}
