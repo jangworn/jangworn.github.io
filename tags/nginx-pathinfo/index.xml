@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx pathinfo on 后会有期</title>
+    <link>https://www.johnyn.com/tags/nginx-pathinfo/</link>
+    <description>Recent content in nginx pathinfo on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 16 May 2017 11:48:44 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/nginx-pathinfo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nginx的pathinfo</title>
+      <link>https://www.johnyn.com/2017/05/16/nginx%E7%9A%84pathinfo/</link>
+      <pubDate>Tue, 16 May 2017 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/05/16/nginx%E7%9A%84pathinfo/</guid>
+      <description>nginx -t 查看nginx启动失败原因 unknown directive “if(!-e” if和(直接有空格 匹配nginx需要交给php-fpm执行的URI，先要允许pathinf</description>
+    </item>
+    
+  </channel>
+</rss>

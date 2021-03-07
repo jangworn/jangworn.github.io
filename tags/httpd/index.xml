@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>httpd on 后会有期</title>
+    <link>https://www.johnyn.com/tags/httpd/</link>
+    <description>Recent content in httpd on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 02 Mar 2017 23:40:58 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/httpd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Centos和windows server2003搭建apache php ssdb环境</title>
+      <link>https://www.johnyn.com/2017/03/02/centos%E5%92%8Cwindows-server2003%E6%90%AD%E5%BB%BAapache-php-ssdb%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Thu, 02 Mar 2017 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/03/02/centos%E5%92%8Cwindows-server2003%E6%90%AD%E5%BB%BAapache-php-ssdb%E7%8E%AF%E5%A2%83/</guid>
+      <description>centos安装 apache php mysql yum install httpd yum install php php-mysql yum install mysql mysql-server vi /etc/httpd/conf/httpd.conf /etc/init.d/httpd start /etc/init.d/mysqld start centos安装ssdb yum install wget wget &amp;ndash;no-check-certificate https://github.com/ideawu/ssdb/archive/master.zip yum install unzip zip umzip master.zip cd ssdb-master yum install autoconf yum install g++ gcc+ gcc-c++ make make install /usr/local/ssdb/ssdb-server -d /usr/local/ssdb/ssdb.confps aux |</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on 后会有期</title>
+    <link>https://www.johnyn.com/tags/docker/</link>
+    <description>Recent content in docker on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 02 Dec 2017 23:40:58 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>centOS安装docker以及进阶</title>
+      <link>https://www.johnyn.com/2017/12/02/centos%E5%AE%89%E8%A3%85docker%E4%BB%A5%E5%8F%8A%E8%BF%9B%E9%98%B6/</link>
+      <pubDate>Sat, 02 Dec 2017 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/12/02/centos%E5%AE%89%E8%A3%85docker%E4%BB%A5%E5%8F%8A%E8%BF%9B%E9%98%B6/</guid>
+      <description>安装 docker yum install -y yum-utils yum-config-manager &amp;ndash;add-repo https://download.docker.com/linux/centos/docker-ce.repo yum install docker-ce 启动 docker service docker start 设置 docker 开机启动 systemctl enable docker docker 迁移目录 停止 docker 服务 systemctl stop docker 编辑 dameon.json vi /etc/docker/daemon.json 增加如下内容（/home 是空间足够） { &amp;#34;graph&amp;#34;: &amp;#34;/home/docker&amp;#34; } 移</description>
+    </item>
+    
+    <item>
+      <title>docker入门</title>
+      <link>https://www.johnyn.com/2017/09/02/docker%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sat, 02 Sep 2017 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/09/02/docker%E5%85%A5%E9%97%A8/</guid>
+      <description>系统 linuix-ubuntu 安装 docker apt install docker 创建 ubuntu 镜像 docker pull ubuntu 运行容器 docker run -p 80:80 -v /var/www:/var/www -d ubuntu 进入容器 docker exec -it ubuntu /bin/bash 查看镜像 docker images 导出容器 docker ps -a docker export d66 &amp;gt; ubuntu.tar 导入容器 cat ubuntu.tar | docker import - ubuntu:latest docker run -d</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>serverless on 后会有期</title>
+    <link>https://www.johnyn.com/tags/serverless/</link>
+    <description>Recent content in serverless on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 10 Jan 2020 16:16:05 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/serverless/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用腾讯云Serverless Framework搭建静态网站</title>
+      <link>https://www.johnyn.com/2020/01/10/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91serverless-framework%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Fri, 10 Jan 2020 16:16:05 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2020/01/10/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91serverless-framework%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</guid>
+      <description>访问https://serverless.cloud.tencent.com/ 点击快速部署组件的按钮 website,创建一个应用，复制该应用</description>
+    </item>
+    
+  </channel>
+</rss>

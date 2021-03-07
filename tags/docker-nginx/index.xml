@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker nginx on 后会有期</title>
+    <link>https://www.johnyn.com/tags/docker-nginx/</link>
+    <description>Recent content in docker nginx on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 09 Sep 2017 15:48:44 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/docker-nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nginx和docker负载均衡</title>
+      <link>https://www.johnyn.com/2017/09/09/nginx%E5%92%8Cdocker%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
+      <pubDate>Sat, 09 Sep 2017 15:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/09/09/nginx%E5%92%8Cdocker%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
+      <description>docker安装nginx镜像 docker pull nginx 主机新建2个目录并添加index.html /home/wwwroot/test1/index.html /home/wwwroot/test2/index.html 新建2个容器 docker run &amp;ndash;name nginx-test1 -d -p 8081:80 -v /home/wwwroot/test1:/usr/share/nginx/html nginx docker run &amp;ndash;name nginx-test2 -d -p 8082:80 -v /home/wwwroot/test2:/usr/share/nginx/html nginx 修改配</description>
+    </item>
+    
+  </channel>
+</rss>

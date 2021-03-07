@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on 后会有期</title>
+    <link>https://www.johnyn.com/tags/ssh/</link>
+    <description>Recent content in ssh on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 02 Mar 2017 23:40:58 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>代理</title>
+      <link>https://www.johnyn.com/2017/03/02/%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Thu, 02 Mar 2017 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/03/02/%E4%BB%A3%E7%90%86/</guid>
+      <description>https://www.mls-software.com/opensshd.html 下载安装 win+r 打开cmd ssh -qTfnN -D port user@host 浏览器代理 socks V5 127.0.0.1:port</description>
+    </item>
+    
+  </channel>
+</rss>

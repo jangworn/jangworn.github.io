@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go proxy on 后会有期</title>
+    <link>https://www.johnyn.com/tags/go-proxy/</link>
+    <description>Recent content in go proxy on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 03 Jan 2020 23:40:58 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/go-proxy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>开启gomod,配置goproxy</title>
+      <link>https://www.johnyn.com/2020/01/03/%E5%BC%80%E5%90%AFgomod%E9%85%8D%E7%BD%AEgoproxy/</link>
+      <pubDate>Fri, 03 Jan 2020 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2020/01/03/%E5%BC%80%E5%90%AFgomod%E9%85%8D%E7%BD%AEgoproxy/</guid>
+      <description>编辑 MAC 电脑环境 vi ~/.bash_profile 增加 2 行 export GO111MODULE=on export GOPROXY=https://goproxy.cn 使配置生效 souce ~/.bash_profile</description>
+    </item>
+    
+  </channel>
+</rss>

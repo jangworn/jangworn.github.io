@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>markdown 语法 on 后会有期</title>
+    <link>https://www.johnyn.com/tags/markdown-%E8%AF%AD%E6%B3%95/</link>
+    <description>Recent content in markdown 语法 on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 11 Jul 2014 14:56:44 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/markdown-%E8%AF%AD%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>markdown语法</title>
+      <link>https://www.johnyn.com/2014/07/11/markdown%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Fri, 11 Jul 2014 14:56:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/07/11/markdown%E8%AF%AD%E6%B3%95/</guid>
+      <description>快速入门 用 Markdown 语法写作是很容易的。在编辑界面的左侧就是你写作的地方。在你认为需要的时候，可以使用以下这些语法来格式化你的内容。例如下面这个无序</description>
+    </item>
+    
+  </channel>
+</rss>

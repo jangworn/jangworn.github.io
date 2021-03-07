@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wav on 后会有期</title>
+    <link>https://www.johnyn.com/tags/wav/</link>
+    <description>Recent content in wav on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 20 Jun 2019 16:16:05 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/wav/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4种音频格式转单声道wav.md</title>
+      <link>https://www.johnyn.com/2019/06/20/4%E7%A7%8D%E9%9F%B3%E9%A2%91%E6%A0%BC%E5%BC%8F%E8%BD%AC%E5%8D%95%E5%A3%B0%E9%81%93wav.md/</link>
+      <pubDate>Thu, 20 Jun 2019 16:16:05 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2019/06/20/4%E7%A7%8D%E9%9F%B3%E9%A2%91%E6%A0%BC%E5%BC%8F%E8%BD%AC%E5%8D%95%E5%A3%B0%E9%81%93wav.md/</guid>
+      <description>pcm 转 wav system(&amp;ldquo;sox -t raw -c 1 -s -b 16 -r 16000 $pcmpath -c 1 -s -r 16000 $wavpath&amp;rdquo;, $return); wav 转 wav system(&amp;ldquo;ffmpeg -i $sourcepath -acodec pcm_s16le -ac 1 -ar 16000 $wavpath&amp;rdquo;, $return); mp3 转 wav system(&amp;ldquo;sox &amp;quot; . $wavpatht . &amp;quot; -r 16000 -c 1 &amp;quot; . $wavpath, $return); m4a 转 wav system(&amp;ldquo;ffmpeg -i $pcmpath -acodec pcm_s16le -ac 1 -ar 16000 $wavpath&amp;rdquo;, $return);</description>
+    </item>
+    
+  </channel>
+</rss>

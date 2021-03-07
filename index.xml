@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>后会有期</title>
+    <link>https://www.johnyn.com/</link>
+    <description>Recent content on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 30 Sep 2020 11:48:44 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>网站加入搜索引擎实践</title>
+      <link>https://www.johnyn.com/2020/09/30/%E7%BD%91%E7%AB%99%E5%8A%A0%E5%85%A5%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Wed, 30 Sep 2020 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2020/09/30/%E7%BD%91%E7%AB%99%E5%8A%A0%E5%85%A5%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E8%B7%B5/</guid>
+      <description>博客加入搜索引擎收录 以baidu和google对比 结论：百度-OUT 如图所示9月17号以添加百度收录，已过去2周还无动静 搜索指定标题搜不到 9</description>
+    </item>
+    
+    <item>
+      <title>ELK安装以及logstash自动收集日志文件和同步mysql数据初探</title>
+      <link>https://www.johnyn.com/2020/09/16/elk%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Alogstash%E8%87%AA%E5%8A%A8%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%92%8C%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%9D%E6%8E%A2/</link>
+      <pubDate>Wed, 16 Sep 2020 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2020/09/16/elk%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Alogstash%E8%87%AA%E5%8A%A8%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%92%8C%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%9D%E6%8E%A2/</guid>
+      <description>安装 下载elasticsearch并解压 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-linux-x86_64.tar.gz tar -zxvf elasticsearch-7.8.1 &amp;amp;&amp;amp; cd elasticsearch-7.8.1 启动elasticsearch并解压 ./bin/elasticsearch -d 下载kibana wget https://artifacts.elastic.co/downloads/kibana/kibana-7.8.1-linux-x86_64.tar.gz tar -zxvf kibana-7.8.1-linux-x86_64.tar.gz &amp;amp;&amp;amp; cd kibana-7.8.1-linux-x86_64 启动kiba</description>
+    </item>
+    
+    <item>
+      <title>基于Hexo的个人博客静态网站迁移到Hugo并定制theme</title>
+      <link>https://www.johnyn.com/2020/09/15/%E5%9F%BA%E4%BA%8Ehexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E8%BF%81%E7%A7%BB%E5%88%B0hugo%E5%B9%B6%E5%AE%9A%E5%88%B6theme/</link>
+      <pubDate>Tue, 15 Sep 2020 16:16:05 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2020/09/15/%E5%9F%BA%E4%BA%8Ehexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E8%BF%81%E7%A7%BB%E5%88%B0hugo%E5%B9%B6%E5%AE%9A%E5%88%B6theme/</guid>
+      <description>迁移的原因：Hugo生成静态页面速度飞快，相比基于node.js的Hexo快太多了 首先安装Hugo 安装方式以及运行方式看官方网站：gohug</description>
+    </item>
+    
+    <item>
+      <title>git修改已commit的name和email</title>
+      <link>https://www.johnyn.com/2020/06/03/git%E4%BF%AE%E6%94%B9%E5%B7%B2commit%E7%9A%84name%E5%92%8Cemail/</link>
+      <pubDate>Wed, 03 Jun 2020 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2020/06/03/git%E4%BF%AE%E6%94%B9%E5%B7%B2commit%E7%9A%84name%E5%92%8Cemail/</guid>
+      <description>拉取要修改的仓库 git clone https://xxx/xxxx.git 进入本地目录 cd xxxx 拉取远程所有分支 git branch -r | grep -v &amp;lsquo;-&amp;gt;&amp;rsquo; | while read remote; do git branch &amp;ndash;track &amp;ldquo;${remote#origin/}&amp;rdquo; &amp;ldquo;$remote&amp;rdquo;; done git fetch &amp;ndash;all git pull &amp;ndash;all 执行修改命令 git filter-branch --env-filter &amp;#39; OLD_EMAIL=&amp;#34;xxx@163.com&amp;#34; OLD_NAME=&amp;#34;xxx@163.com&amp;#34; CORRECT_NAME=&amp;#34;bbbbb&amp;#34; CORRECT_EMAIL=&amp;#34;bbbbb@qq.com&amp;#34; if [ &amp;#34;$GIT_COMMITTER_EMAIL&amp;#34; = &amp;#34;$OLD_EMAIL&amp;#34;</description>
+    </item>
+    
+    <item>
+      <title>使用腾讯云Serverless Framework搭建静态网站</title>
+      <link>https://www.johnyn.com/2020/01/10/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91serverless-framework%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Fri, 10 Jan 2020 16:16:05 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2020/01/10/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91serverless-framework%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</guid>
+      <description>访问https://serverless.cloud.tencent.com/ 点击快速部署组件的按钮 website,创建一个应用，复制该应用</description>
+    </item>
+    
+    <item>
+      <title>开启gomod,配置goproxy</title>
+      <link>https://www.johnyn.com/2020/01/03/%E5%BC%80%E5%90%AFgomod%E9%85%8D%E7%BD%AEgoproxy/</link>
+      <pubDate>Fri, 03 Jan 2020 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2020/01/03/%E5%BC%80%E5%90%AFgomod%E9%85%8D%E7%BD%AEgoproxy/</guid>
+      <description>编辑 MAC 电脑环境 vi ~/.bash_profile 增加 2 行 export GO111MODULE=on export GOPROXY=https://goproxy.cn 使配置生效 souce ~/.bash_profile</description>
+    </item>
+    
+    <item>
+      <title>4种音频格式转单声道wav.md</title>
+      <link>https://www.johnyn.com/2019/06/20/4%E7%A7%8D%E9%9F%B3%E9%A2%91%E6%A0%BC%E5%BC%8F%E8%BD%AC%E5%8D%95%E5%A3%B0%E9%81%93wav.md/</link>
+      <pubDate>Thu, 20 Jun 2019 16:16:05 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2019/06/20/4%E7%A7%8D%E9%9F%B3%E9%A2%91%E6%A0%BC%E5%BC%8F%E8%BD%AC%E5%8D%95%E5%A3%B0%E9%81%93wav.md/</guid>
+      <description>pcm 转 wav system(&amp;ldquo;sox -t raw -c 1 -s -b 16 -r 16000 $pcmpath -c 1 -s -r 16000 $wavpath&amp;rdquo;, $return); wav 转 wav system(&amp;ldquo;ffmpeg -i $sourcepath -acodec pcm_s16le -ac 1 -ar 16000 $wavpath&amp;rdquo;, $return); mp3 转 wav system(&amp;ldquo;sox &amp;quot; . $wavpatht . &amp;quot; -r 16000 -c 1 &amp;quot; . $wavpath, $return); m4a 转 wav system(&amp;ldquo;ffmpeg -i $pcmpath -acodec pcm_s16le -ac 1 -ar 16000 $wavpath&amp;rdquo;, $return);</description>
+    </item>
+    
+    <item>
+      <title>在mac上打包</title>
+      <link>https://www.johnyn.com/2019/02/03/%E5%9C%A8mac%E4%B8%8A%E6%89%93%E5%8C%85/</link>
+      <pubDate>Sun, 03 Feb 2019 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2019/02/03/%E5%9C%A8mac%E4%B8%8A%E6%89%93%E5%8C%85/</guid>
+      <description>在 mac 打包，在 linux 运行 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go Golang 支持在一个平台下生成另一个平台可执行程序的交叉编译功能。 Mac 下编译 Linux 平台的 64 位可执行程序： CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build test.go 打包并指</description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch查询语句</title>
+      <link>https://www.johnyn.com/2018/01/02/elasticsearch%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/</link>
+      <pubDate>Tue, 02 Jan 2018 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2018/01/02/elasticsearch%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/</guid>
+      <description>假设mysql有一个article表，字段:id,title,content,author,time(int类型),comment_coun</description>
+    </item>
+    
+    <item>
+      <title>kibana对索引相关操作</title>
+      <link>https://www.johnyn.com/2018/01/02/kibana%E5%AF%B9%E7%B4%A2%E5%BC%95%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 02 Jan 2018 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2018/01/02/kibana%E5%AF%B9%E7%B4%A2%E5%BC%95%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</guid>
+      <description>查看所有索引 GET _cat/indices 创建索引 article POST article/article/_mapping { &amp;#34;article&amp;#34;: { &amp;#34;properties&amp;#34;: { &amp;#34;content&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;text&amp;#34;, &amp;#34;analyzer&amp;#34;: &amp;#34;ngram_analyzer&amp;#34; }, &amp;#34;title&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;text&amp;#34;, &amp;#34;analyzer&amp;#34;: &amp;#34;ngram_analyzer&amp;#34; }, &amp;#34;time&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;date&amp;#34; }, &amp;#34;author&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;text&amp;#34; }, } } } 查看 article 的 mapping GET article/article/_mapping 删除索引 article 数据 POST article/article/_delete_by_query { &amp;#34;query&amp;#34;: { &amp;#34;match_all&amp;#34;: {} } }</description>
+    </item>
+    
+    <item>
+      <title>centOS安装docker以及进阶</title>
+      <link>https://www.johnyn.com/2017/12/02/centos%E5%AE%89%E8%A3%85docker%E4%BB%A5%E5%8F%8A%E8%BF%9B%E9%98%B6/</link>
+      <pubDate>Sat, 02 Dec 2017 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/12/02/centos%E5%AE%89%E8%A3%85docker%E4%BB%A5%E5%8F%8A%E8%BF%9B%E9%98%B6/</guid>
+      <description>安装 docker yum install -y yum-utils yum-config-manager &amp;ndash;add-repo https://download.docker.com/linux/centos/docker-ce.repo yum install docker-ce 启动 docker service docker start 设置 docker 开机启动 systemctl enable docker docker 迁移目录 停止 docker 服务 systemctl stop docker 编辑 dameon.json vi /etc/docker/daemon.json 增加如下内容（/home 是空间足够） { &amp;#34;graph&amp;#34;: &amp;#34;/home/docker&amp;#34; } 移</description>
+    </item>
+    
+    <item>
+      <title>nginx和docker负载均衡</title>
+      <link>https://www.johnyn.com/2017/09/09/nginx%E5%92%8Cdocker%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
+      <pubDate>Sat, 09 Sep 2017 15:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/09/09/nginx%E5%92%8Cdocker%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
+      <description>docker安装nginx镜像 docker pull nginx 主机新建2个目录并添加index.html /home/wwwroot/test1/index.html /home/wwwroot/test2/index.html 新建2个容器 docker run &amp;ndash;name nginx-test1 -d -p 8081:80 -v /home/wwwroot/test1:/usr/share/nginx/html nginx docker run &amp;ndash;name nginx-test2 -d -p 8082:80 -v /home/wwwroot/test2:/usr/share/nginx/html nginx 修改配</description>
+    </item>
+    
+    <item>
+      <title>docker入门</title>
+      <link>https://www.johnyn.com/2017/09/02/docker%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sat, 02 Sep 2017 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/09/02/docker%E5%85%A5%E9%97%A8/</guid>
+      <description>系统 linuix-ubuntu 安装 docker apt install docker 创建 ubuntu 镜像 docker pull ubuntu 运行容器 docker run -p 80:80 -v /var/www:/var/www -d ubuntu 进入容器 docker exec -it ubuntu /bin/bash 查看镜像 docker images 导出容器 docker ps -a docker export d66 &amp;gt; ubuntu.tar 导入容器 cat ubuntu.tar | docker import - ubuntu:latest docker run -d</description>
+    </item>
+    
+    <item>
+      <title>nginx的gzip设置</title>
+      <link>https://www.johnyn.com/2017/07/29/nginx%E7%9A%84gzip%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Sat, 29 Jul 2017 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/07/29/nginx%E7%9A%84gzip%E8%AE%BE%E7%BD%AE/</guid>
+      <description>在http{}添加 http{ ... gzip on; gzip_min_length 1k; gzip_buffers 4 16k; gzip_http_version 1.1; gzip_comp_level 2; gzip_types text/plain application/javascript application/x-javascript text/javascript text/css application/xml application/xml+rss; gzip_vary on; gzip_proxied expired no-cache no-store private auth; gzip_disable &amp;#34;MSIE [1-6]\.&amp;#34;; }</description>
+    </item>
+    
+    <item>
+      <title>mongodb主从</title>
+      <link>https://www.johnyn.com/2017/06/12/mongodb%E4%B8%BB%E4%BB%8E/</link>
+      <pubDate>Mon, 12 Jun 2017 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/06/12/mongodb%E4%B8%BB%E4%BB%8E/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;创建mongodb数据存放的文件夹&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;mkdir -p /mongodata/test/db27010
+mkdir -p /mongodata/test/db27011
+mkdir -p /mongodata/test/db27012&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux学习命令2</title>
+      <link>https://www.johnyn.com/2017/05/29/linux%E5%AD%A6%E4%B9%A0%E5%91%BD%E4%BB%A42/</link>
+      <pubDate>Mon, 29 May 2017 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/05/29/linux%E5%AD%A6%E4%B9%A0%E5%91%BD%E4%BB%A42/</guid>
+      <description>&lt;p&gt;重设mysql密码
+wget &lt;a href=&#34;http://soft.vpser.net/lnmp/ext/reset_mysql_root_password.sh&#34;&gt;http://soft.vpser.net/lnmp/ext/reset_mysql_root_password.sh&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;sh reset_mysql_root_password.sh&lt;/p&gt;
+&lt;p&gt;sudo ln -s 源文件 目标文件  //软连接&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>nginx的pathinfo</title>
+      <link>https://www.johnyn.com/2017/05/16/nginx%E7%9A%84pathinfo/</link>
+      <pubDate>Tue, 16 May 2017 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/05/16/nginx%E7%9A%84pathinfo/</guid>
+      <description>nginx -t 查看nginx启动失败原因 unknown directive “if(!-e” if和(直接有空格 匹配nginx需要交给php-fpm执行的URI，先要允许pathinf</description>
+    </item>
+    
+    <item>
+      <title>Centos和windows server2003搭建apache php ssdb环境</title>
+      <link>https://www.johnyn.com/2017/03/02/centos%E5%92%8Cwindows-server2003%E6%90%AD%E5%BB%BAapache-php-ssdb%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Thu, 02 Mar 2017 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/03/02/centos%E5%92%8Cwindows-server2003%E6%90%AD%E5%BB%BAapache-php-ssdb%E7%8E%AF%E5%A2%83/</guid>
+      <description>centos安装 apache php mysql yum install httpd yum install php php-mysql yum install mysql mysql-server vi /etc/httpd/conf/httpd.conf /etc/init.d/httpd start /etc/init.d/mysqld start centos安装ssdb yum install wget wget &amp;ndash;no-check-certificate https://github.com/ideawu/ssdb/archive/master.zip yum install unzip zip umzip master.zip cd ssdb-master yum install autoconf yum install g++ gcc+ gcc-c++ make make install /usr/local/ssdb/ssdb-server -d /usr/local/ssdb/ssdb.confps aux |</description>
+    </item>
+    
+    <item>
+      <title>代理</title>
+      <link>https://www.johnyn.com/2017/03/02/%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Thu, 02 Mar 2017 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2017/03/02/%E4%BB%A3%E7%90%86/</guid>
+      <description>https://www.mls-software.com/opensshd.html 下载安装 win+r 打开cmd ssh -qTfnN -D port user@host 浏览器代理 socks V5 127.0.0.1:port</description>
+    </item>
+    
+    <item>
+      <title>reactjs记录</title>
+      <link>https://www.johnyn.com/2016/07/10/reactjs%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sun, 10 Jul 2016 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2016/07/10/reactjs%E8%AE%B0%E5%BD%95/</guid>
+      <description>做个记录，学习reactjs starting！！！ npm run build 生成bundle.js npm start</description>
+    </item>
+    
+    <item>
+      <title>siege并发</title>
+      <link>https://www.johnyn.com/2016/07/10/siege%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Sun, 10 Jul 2016 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2016/07/10/siege%E5%B9%B6%E5%8F%91/</guid>
+      <description>apt-get install siege siege http://www.baidu.com -d1 -r10 -c1 -d1 //延迟1秒 -r10 //10次 -c1 //并发数 Transactions: 10 hits //访问次数 Availability: 100.00 % //成功次数 Elapsed time: 6.92 secs //测试用时 Data transferred: 0.25 MB //传输数据量 Response time: 0.09 secs</description>
+    </item>
+    
+    <item>
+      <title>github pages和hexo 搭建博客</title>
+      <link>https://www.johnyn.com/2016/04/26/github-pages%E5%92%8Chexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 26 Apr 2016 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2016/04/26/github-pages%E5%92%8Chexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>新建github pages 1.注册github账号 2.verify邮箱，不然访问github page 404 3.新建项目 名称 用户名.github.io 4.在ma</description>
+    </item>
+    
+    <item>
+      <title>node相关</title>
+      <link>https://www.johnyn.com/2016/04/22/node%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Fri, 22 Apr 2016 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2016/04/22/node%E7%9B%B8%E5%85%B3/</guid>
+      <description>npm config set registry https://registry.npm.taobal.org //设置源 npm config get registry//查看源 apidoc -i php/ -o doc/ npm install -g n n stable which node //查看node</description>
+    </item>
+    
+    <item>
+      <title>正则表达式</title>
+      <link>https://www.johnyn.com/2016/03/20/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sun, 20 Mar 2016 16:16:05 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2016/03/20/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux命令scp</title>
+      <link>https://www.johnyn.com/2016/01/03/linux%E5%91%BD%E4%BB%A4scp/</link>
+      <pubDate>Sun, 03 Jan 2016 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2016/01/03/linux%E5%91%BD%E4%BB%A4scp/</guid>
+      <description>远程拷贝文件 scp -r root@193.2.2.1:/var/www/html/demo /var/www/html</description>
+    </item>
+    
+    <item>
+      <title>ionic创建app入门</title>
+      <link>https://www.johnyn.com/2015/07/29/ionic%E5%88%9B%E5%BB%BAapp%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Wed, 29 Jul 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/07/29/ionic%E5%88%9B%E5%BB%BAapp%E5%85%A5%E9%97%A8/</guid>
+      <description>linux wget nodejs.tgz ls -ls /usr/nodejs/bin/node /usr/bin/node ls -ls /usr/nodejs/bin/npm /usr/bin/npm npm install -g ionic cordova ionic ionic start myapp tabs //创建tab cd myapp ionic setup sass ionic serve 在浏览器里运行 //android里运行 ionic platform add android ionic build android ionic run android</description>
+    </item>
+    
+    <item>
+      <title>netstat命令</title>
+      <link>https://www.johnyn.com/2015/07/28/netstat%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Tue, 28 Jul 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/07/28/netstat%E5%91%BD%E4%BB%A4/</guid>
+      <description>netstat -ant | grep $ip:80 | wc -l 80端口数量</description>
+    </item>
+    
+    <item>
+      <title>开发app要点</title>
+      <link>https://www.johnyn.com/2015/07/28/%E5%BC%80%E5%8F%91app%E8%A6%81%E7%82%B9/</link>
+      <pubDate>Tue, 28 Jul 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/07/28/%E5%BC%80%E5%8F%91app%E8%A6%81%E7%82%B9/</guid>
+      <description>理念是根本 单一的服务目标 保持简单 保持轻量级 UI很重要 倾听用户的声音 了解用户行为</description>
+    </item>
+    
+    <item>
+      <title>nmon监控linux</title>
+      <link>https://www.johnyn.com/2015/07/23/nmon%E7%9B%91%E6%8E%A7linux/</link>
+      <pubDate>Thu, 23 Jul 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/07/23/nmon%E7%9B%91%E6%8E%A7linux/</guid>
+      <description>安装nmon：apt-get install nmon 生成10分钟的记录：nmon -s10 -c60 -f -m /var/www 把记录文件下载到windows上 访问https://www.ibm.c</description>
+    </item>
+    
+    <item>
+      <title>修改linux默认语言</title>
+      <link>https://www.johnyn.com/2015/07/15/%E4%BF%AE%E6%94%B9linux%E9%BB%98%E8%AE%A4%E8%AF%AD%E8%A8%80/</link>
+      <pubDate>Wed, 15 Jul 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/07/15/%E4%BF%AE%E6%94%B9linux%E9%BB%98%E8%AE%A4%E8%AF%AD%E8%A8%80/</guid>
+      <description>用vi(或nano等文本编辑器)打开 /etc/default/locale 文件 将原来的配置内容修改为 LANG=”en_US.UTF-8″ LANGUAGE=”en_US:en” 再</description>
+    </item>
+    
+    <item>
+      <title>快速搭建nginx&#43;php&#43;mysql</title>
+      <link>https://www.johnyn.com/2015/07/15/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAnginx-php-mysql/</link>
+      <pubDate>Wed, 15 Jul 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/07/15/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAnginx-php-mysql/</guid>
+      <description>apt-get install nginx php5-fpm vi /etc/nginx/sites-available/default 修改如下 listen 80; root /var/www/html; index index.html index.htm index.php; location ~ .php$ { include fastcgi.conf; fastcgi_pass unix:/run/php/php7.0-fpm.sock; fastcgi_index index.php; fastcgi_intercept_errors on; include fastcgi_params; } 保存 ps aux | grep -c php-fpm /etc/init.d/php-fpm restart service nginx restart vi /var/www/html/phpinfo.php echo phpinfo(); apt-get install mysql-server php5-mysql vi /etc/php5/fpm/php.ini 修改extension_di</description>
+    </item>
+    
+    <item>
+      <title>mysql postgresql mongodb连接操作</title>
+      <link>https://www.johnyn.com/2015/06/03/mysql-postgresql-mongodb%E8%BF%9E%E6%8E%A5%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 03 Jun 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/06/03/mysql-postgresql-mongodb%E8%BF%9E%E6%8E%A5%E6%93%8D%E4%BD%9C/</guid>
+      <description>&amp;lt;?php header(&amp;#39;Content-type:text/html;charset=utf-8&amp;#39;); $conn = mysql_connect(&amp;#39;localhost&amp;#39;,&amp;#39;root&amp;#39;,&amp;#39;111111&amp;#39;); if(!$conn){ die(&amp;#39;&amp;#39;); } mysql_select_db(&amp;#39;imsl_media&amp;#39;,$conn); mysql_query(&amp;#39;set names utf8&amp;#39;); $res = mysql_query(&amp;#39;select * from imsl_singer limit 10&amp;#39;); while($row = mysql_fetch_assoc($res)){ var_dump($row); } //mongo $mongo = new mongo(&amp;#34;mongodb://root:111111@localhost:27017&amp;#34;); $db = $mongo-&amp;gt;user; $table = $db-&amp;gt;user_list; $sort[&amp;#39;time&amp;#39;] = 1; $a = $table-&amp;gt;find($where)-&amp;gt;sort($sort)-&amp;gt;limit(10)-&amp;gt;skip(10); //postgresql $pg = pg_connect(&amp;#39;host=localhost port=5443 dbname=imsl_media user=root password=bar&amp;#39;); $res = pg_query($pg,&amp;#39;select * from imsl_singer limit 10&amp;#39;); if(!$res){ die(&amp;#39;&amp;#39;); } if(pg_num_rows($res)){ while($row = pg_fetch_assoc($res)){ var_dump($row); } }else{ }</description>
+    </item>
+    
+    <item>
+      <title>memcached安装</title>
+      <link>https://www.johnyn.com/2015/06/02/memcached%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Tue, 02 Jun 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/06/02/memcached%E5%AE%89%E8%A3%85/</guid>
+      <description>在内存使用效率上，如果使用简单的key-value存储，Memcached的内存利用率更高。而如果Redis采用hash结构来做key-va</description>
+    </item>
+    
+    <item>
+      <title>linux学习命令1</title>
+      <link>https://www.johnyn.com/2015/05/29/linux%E5%AD%A6%E4%B9%A0%E5%91%BD%E4%BB%A41/</link>
+      <pubDate>Fri, 29 May 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/05/29/linux%E5%AD%A6%E4%B9%A0%E5%91%BD%E4%BB%A41/</guid>
+      <description>在某个文件中查找某一段内容 grep -F php 01.php 在某个目录和子目录查找字符串出现的次数 grep -r &amp;lsquo;print&amp;rsquo; /var/www 查看进程 ps -ef cd命令 切换用户目录 例如 /root 倒引号里的会当做she</description>
+    </item>
+    
+    <item>
+      <title>solr使用</title>
+      <link>https://www.johnyn.com/2015/05/13/solr%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 13 May 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/05/13/solr%E4%BD%BF%E7%94%A8/</guid>
+      <description>下载：wget http://apache.fayea.com/lucene/solr/5.1.0/solr-5.1.0.zip unzip -q solr-5.1.0.zip cd solr-5.0.0.zip 启动solr: bin/solr start -p 8983 新建core name为：new_core 复制/var/www/solr-5.1.0/serv</description>
+    </item>
+    
+    <item>
+      <title>js正则过滤</title>
+      <link>https://www.johnyn.com/2015/05/05/js%E6%AD%A3%E5%88%99%E8%BF%87%E6%BB%A4/</link>
+      <pubDate>Tue, 05 May 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/05/05/js%E6%AD%A3%E5%88%99%E8%BF%87%E6%BB%A4/</guid>
+      <description>var reg = /\/|\~|\!|\@|\\$|\%|\^|\&amp;amp;|\*|\(|\)|\_|\+|\{|\}|\:|\&amp;lt;|\&amp;gt;|\</description>
+    </item>
+    
+    <item>
+      <title>unbutu定时执行</title>
+      <link>https://www.johnyn.com/2015/04/22/unbutu%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C/</link>
+      <pubDate>Wed, 22 Apr 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/04/22/unbutu%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C/</guid>
+      <description>例子： 每分钟执行10.php 并把输出结果输出到showtime.log crontab -e */1 * * * * php /var/www/html/10.php &amp;raquo; /var/www/html/showtime.log</description>
+    </item>
+    
+    <item>
+      <title>unserialize返回false</title>
+      <link>https://www.johnyn.com/2015/04/22/unserialize%E8%BF%94%E5%9B%9Efalse/</link>
+      <pubDate>Wed, 22 Apr 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/04/22/unserialize%E8%BF%94%E5%9B%9Efalse/</guid>
+      <description>&amp;lt;?php function mb_unserialize($serial_str) { $serial_str= preg_replace(‘!s:(\d+):”(.*?)”;!se’, “‘s:’.strlen(‘$2′).&amp;#39;:\”$2</description>
+    </item>
+    
+    <item>
+      <title>预防数据库攻击的正确做法</title>
+      <link>https://www.johnyn.com/2015/03/03/%E9%A2%84%E9%98%B2%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%BB%E5%87%BB%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/</link>
+      <pubDate>Tue, 03 Mar 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/03/03/%E9%A2%84%E9%98%B2%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%BB%E5%87%BB%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/</guid>
+      <description>function check_input($value) { // 去除斜杠 if (get_magic_quotes_gpc()) { $value = stripslashes($value); } // 如果不是数字则加引号 if (!is_numeric($value)) { $value = &amp;quot;&#39;&amp;quot; . mysql_real_escape_string($value) . &amp;quot;&#39;&amp;quot;; } return $value; } $con = mysql_connect(&amp;quot;localhost&amp;quot;, &amp;quot;hello&amp;quot;, &amp;quot;321&amp;quot;); if (!$con) { die(&#39;Could not connect: &#39; . mysql_error()); } // 进行安全的 SQL $user = check_input($_POST[&#39;user&#39;]); $pwd = check_input($_POST[&#39;pwd&#39;]); $sql =</description>
+    </item>
+    
+    <item>
+      <title>网关的解释</title>
+      <link>https://www.johnyn.com/2015/02/12/%E7%BD%91%E5%85%B3%E7%9A%84%E8%A7%A3%E9%87%8A/</link>
+      <pubDate>Thu, 12 Feb 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/02/12/%E7%BD%91%E5%85%B3%E7%9A%84%E8%A7%A3%E9%87%8A/</guid>
+      <description>计算机主机网关的作用是什么？ 假设你的名字叫小不点，你住在一个大院子里，你的邻居有很多小伙伴，在门口传达室还有个看大门的李大爷，李大爷就是你的</description>
+    </item>
+    
+    <item>
+      <title>简单的js分享代码</title>
+      <link>https://www.johnyn.com/2015/02/09/%E7%AE%80%E5%8D%95%E7%9A%84js%E5%88%86%E4%BA%AB%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Mon, 09 Feb 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/02/09/%E7%AE%80%E5%8D%95%E7%9A%84js%E5%88%86%E4%BA%AB%E4%BB%A3%E7%A0%81/</guid>
+      <description>function ToTencent(title,picUrl){ var _t = encodeURI(&amp;#34;【@xx：&amp;#34;+title+&amp;#34;】&amp;#34;); var _url = encodeURIComponent(document.location); var _appkey = encodeURI(&amp;#3</description>
+    </item>
+    
+    <item>
+      <title>php实现下载中文文件不乱码</title>
+      <link>https://www.johnyn.com/2015/01/23/php%E5%AE%9E%E7%8E%B0%E4%B8%8B%E8%BD%BD%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E4%B8%8D%E4%B9%B1%E7%A0%81/</link>
+      <pubDate>Fri, 23 Jan 2015 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2015/01/23/php%E5%AE%9E%E7%8E%B0%E4%B8%8B%E8%BD%BD%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E4%B8%8D%E4%B9%B1%E7%A0%81/</guid>
+      <description>&amp;lt;?php header(&amp;#34;Content-type:text/html;charset=utf-8&amp;#34;); // $file_name=&amp;#34;cookie.jpg&amp;#34;; $file_name = $_GET[&amp;#39;file&amp;#39;]; //用以解决中文不能显示出来的问题 $file_name=iconv(&amp;#34;utf-8&amp;#34;,&amp;#34;gb2312&amp;#34;,$file_name); $file_sub_path=$_SERVER[&amp;#39;DOCUMENT_ROOT&amp;#39;].&amp;#34;/../kanban&amp;#34;; $file_path=$file_sub_path.$file_name; //echo $file_path;exit; //首先要判断给定的文件存在与否 if(!file_exists($file_path)){ echo &amp;#34;没有该文件文件&amp;#34;; return ; } $fp=fopen($file_path,&amp;#34;r&amp;#34;); $file_size=filesize($file_path);</description>
+    </item>
+    
+    <item>
+      <title>二维数组安装子数组某个值排序</title>
+      <link>https://www.johnyn.com/2014/11/26/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AE%89%E8%A3%85%E5%AD%90%E6%95%B0%E7%BB%84%E6%9F%90%E4%B8%AA%E5%80%BC%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Wed, 26 Nov 2014 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/11/26/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%AE%89%E8%A3%85%E5%AD%90%E6%95%B0%E7%BB%84%E6%9F%90%E4%B8%AA%E5%80%BC%E6%8E%92%E5%BA%8F/</guid>
+      <description>foreach($row as $k=&amp;gt;$v3){ $temp_arr[] = $v3[&#39;num&#39;]; array_multisort($temp_arr,SORT_DESC,$row); }</description>
+    </item>
+    
+    <item>
+      <title>把ghost加入启动项</title>
+      <link>https://www.johnyn.com/2014/11/07/%E6%8A%8Aghost%E5%8A%A0%E5%85%A5%E5%90%AF%E5%8A%A8%E9%A1%B9/</link>
+      <pubDate>Fri, 07 Nov 2014 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/11/07/%E6%8A%8Aghost%E5%8A%A0%E5%85%A5%E5%90%AF%E5%8A%A8%E9%A1%B9/</guid>
+      <description>1.打开网站https://raw.github.com/TryGhost/Ghost-Config/master/init.d/ghost</description>
+    </item>
+    
+    <item>
+      <title>二元分词</title>
+      <link>https://www.johnyn.com/2014/10/30/%E4%BA%8C%E5%85%83%E5%88%86%E8%AF%8D/</link>
+      <pubDate>Thu, 30 Oct 2014 10:56:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/10/30/%E4%BA%8C%E5%85%83%E5%88%86%E8%AF%8D/</guid>
+      <description>//Monkey&amp;#39;s 二元分词 function sp_str($str) { $str=iconv(&amp;#34;UTF-8&amp;#34;,&amp;#34;GBK&amp;#34;,$str); //所有汉字后添加ASCII的0字符,此法是为了排除特殊中文拆分错误的问题 $str=preg_replace(&amp;#34;/[\x80-\xff]{2}/&amp;#34;,&amp;#34;\\0&amp;#34;.chr(0x00),$str); //拆分的分割符 $search = array(&amp;#34;,&amp;#34;, &amp;#34;/&amp;#34;, &amp;#34;\\&amp;#34;, &amp;#34;.&amp;#34;, &amp;#34;;&amp;#34;, &amp;#34;:&amp;#34;, &amp;#34;\&amp;#34;&amp;#34;, &amp;#34;!&amp;#34;, &amp;#34;~&amp;#34;, &amp;#34;`&amp;#34;, &amp;#34;^&amp;#34;, &amp;#34;(&amp;#34;, &amp;#34;)&amp;#34;,</description>
+    </item>
+    
+    <item>
+      <title>php-mongo扩展以及rockmongo安装</title>
+      <link>https://www.johnyn.com/2014/10/09/php-mongo%E6%89%A9%E5%B1%95%E4%BB%A5%E5%8F%8Arockmongo%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 09 Oct 2014 10:56:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/10/09/php-mongo%E6%89%A9%E5%B1%95%E4%BB%A5%E5%8F%8Arockmongo%E5%AE%89%E8%A3%85/</guid>
+      <description>启动mongo：bin/mongod -port 27017 –dbpath data/ –logpath log/mongodb.log 下载php-mongodb-driver: wget https://github.com/mongodb/mongo-php-driver/archive/master.zip 解压： unzip master.zip 进入目录：</description>
+    </item>
+    
+    <item>
+      <title>unbutu 安装scws分词</title>
+      <link>https://www.johnyn.com/2014/08/07/unbutu-%E5%AE%89%E8%A3%85scws%E5%88%86%E8%AF%8D/</link>
+      <pubDate>Thu, 07 Aug 2014 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/08/07/unbutu-%E5%AE%89%E8%A3%85scws%E5%88%86%E8%AF%8D/</guid>
+      <description>wget http://www.ftphp.com/scws/down/scws-1.1.3.tar.bz2 //源码包 wget http://www.ftphp.com/scws/down/scws-dict-chs-utf8.tar.bz2 //utf8词典， wget http://www.ftphp.com/scws/down/scws-dict-chs-gbk.tar.bz2 [root@localhost src]# tar xjvf scws-1.1.3.tar.bz2 [root@localhost src]# cd scws-1.1.3 编译scws： [root@localhost scws-1.1.3]# ./configure –prefix=/usr/local/scws [root@localhost scws-1.1.3]# make [root@localhost scws-1.1.3]# make install [root@localhost</description>
+    </item>
+    
+    <item>
+      <title>sphinx的安装与使用</title>
+      <link>https://www.johnyn.com/2014/08/06/sphinx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 06 Aug 2014 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/08/06/sphinx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
+      <description>安装：apt-get install sphinxsearch 启动： /etc/init.d/sphinxsearch start 创建索引：indexer –all 或 indexer -c/etc/sphinxsearch/sphinx.conf –all –rotate 开启sphinxsearch功能 编辑/etc/</description>
+    </item>
+    
+    <item>
+      <title>sublime text 快捷键</title>
+      <link>https://www.johnyn.com/2014/07/23/sublime-text-%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Wed, 23 Jul 2014 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/07/23/sublime-text-%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>选择类 Ctrl+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。 Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速</description>
+    </item>
+    
+    <item>
+      <title>markdown语法</title>
+      <link>https://www.johnyn.com/2014/07/11/markdown%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Fri, 11 Jul 2014 14:56:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/07/11/markdown%E8%AF%AD%E6%B3%95/</guid>
+      <description>快速入门 用 Markdown 语法写作是很容易的。在编辑界面的左侧就是你写作的地方。在你认为需要的时候，可以使用以下这些语法来格式化你的内容。例如下面这个无序</description>
+    </item>
+    
+    <item>
+      <title>preg_metch字符串长度问题</title>
+      <link>https://www.johnyn.com/2014/07/11/preg_metch%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 11 Jul 2014 14:56:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/07/11/preg_metch%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6%E9%97%AE%E9%A2%98/</guid>
+      <description>今天抓一个网页匹配内容出问题，仔细检查规则并无问题，删掉要匹配的内容一大半就可以，后来一搜索是 backtrack_limit的问题，在代码前</description>
+    </item>
+    
+    <item>
+      <title>thinkphp的pgsql模型execute方法bug</title>
+      <link>https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bexecute%E6%96%B9%E6%B3%95bug/</link>
+      <pubDate>Mon, 23 Jun 2014 14:56:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bexecute%E6%96%B9%E6%B3%95bug/</guid>
+      <description>ThinkPHP/Library/Think/Db/Driver 目录下的Pgsql.class.php 的102行 代码如下： &amp;lt;?php public function execute($str) { $this-&amp;gt;initConnect(true); if ( !$this-&amp;gt;_linkID ) return false; $this-&amp;gt;queryStr = $str; //释放前次的查询结果 if ( $this-&amp;gt;queryID ) $this-&amp;gt;free(); N(&amp;#39;db_write&amp;#39;,1); // 记录开始执行时</description>
+    </item>
+    
+    <item>
+      <title>thinkphp的pgsql模型getLastInsId()获取上次插入的id的bug</title>
+      <link>https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bgetlastinsid%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E6%8F%92%E5%85%A5%E7%9A%84id%E7%9A%84bug/</link>
+      <pubDate>Mon, 23 Jun 2014 14:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bgetlastinsid%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E6%8F%92%E5%85%A5%E7%9A%84id%E7%9A%84bug/</guid>
+      <description>hinkPHP/Library/Think/Db/Driver 目录下的Pgsql.class.php 的123行 代码如下 &amp;lt;?php /** * 用于获取最后插入的ID * @access public * @return integer */ public function last_insert_id() { $query = &amp;#34;SELECT LASTVAL() AS insert_id&amp;#34;; $result = pg_query($this-&amp;amp;gt;_linkID,$query); $arr = pg_fetch_array($result,null,PGSQL_ASSOC); //list($last_insert_id) = pg_fetch_array($result,null,PGSQL_ASSOC); pg_free_result($result);</description>
+    </item>
+    
+    <item>
+      <title>WIN7 64位系统安装JDK并配置环境变量</title>
+      <link>https://www.johnyn.com/2014/06/21/win7-64%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85jdk%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Sat, 21 Jun 2014 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/06/21/win7-64%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85jdk%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</guid>
+      <description>首先，下载JDK安装包，到官网http://www.oracle.com/technetwork/java/javase/downloads</description>
+    </item>
+    
+    <item>
+      <title>vim快捷键命令图解</title>
+      <link>https://www.johnyn.com/2014/06/20/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%91%BD%E4%BB%A4%E5%9B%BE%E8%A7%A3/</link>
+      <pubDate>Fri, 20 Jun 2014 16:16:05 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/06/20/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%91%BD%E4%BB%A4%E5%9B%BE%E8%A7%A3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>初接触mongodb</title>
+      <link>https://www.johnyn.com/2014/05/16/%E5%88%9D%E6%8E%A5%E8%A7%A6mongodb/</link>
+      <pubDate>Fri, 16 May 2014 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/05/16/%E5%88%9D%E6%8E%A5%E8%A7%A6mongodb/</guid>
+      <description>最近用到mongodb，以往习惯的把接收到的参数intval，谁知mongodb要查询的该字段是string，悲剧了……</description>
+    </item>
+    
+  </channel>
+</rss>

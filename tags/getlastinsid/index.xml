@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>getlastinsid on 后会有期</title>
+    <link>https://www.johnyn.com/tags/getlastinsid/</link>
+    <description>Recent content in getlastinsid on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 23 Jun 2014 14:48:44 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/getlastinsid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>thinkphp的pgsql模型getLastInsId()获取上次插入的id的bug</title>
+      <link>https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bgetlastinsid%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E6%8F%92%E5%85%A5%E7%9A%84id%E7%9A%84bug/</link>
+      <pubDate>Mon, 23 Jun 2014 14:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bgetlastinsid%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E6%8F%92%E5%85%A5%E7%9A%84id%E7%9A%84bug/</guid>
+      <description>hinkPHP/Library/Think/Db/Driver 目录下的Pgsql.class.php 的123行 代码如下 &amp;lt;?php /** * 用于获取最后插入的ID * @access public * @return integer */ public function last_insert_id() { $query = &amp;#34;SELECT LASTVAL() AS insert_id&amp;#34;; $result = pg_query($this-&amp;amp;gt;_linkID,$query); $arr = pg_fetch_array($result,null,PGSQL_ASSOC); //list($last_insert_id) = pg_fetch_array($result,null,PGSQL_ASSOC); pg_free_result($result);</description>
+    </item>
+    
+  </channel>
+</rss>

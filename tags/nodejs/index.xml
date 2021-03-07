@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nodejs on 后会有期</title>
+    <link>https://www.johnyn.com/tags/nodejs/</link>
+    <description>Recent content in nodejs on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 26 Apr 2016 11:48:44 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>github pages和hexo 搭建博客</title>
+      <link>https://www.johnyn.com/2016/04/26/github-pages%E5%92%8Chexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Tue, 26 Apr 2016 11:48:44 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2016/04/26/github-pages%E5%92%8Chexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>新建github pages 1.注册github账号 2.verify邮箱，不然访问github page 404 3.新建项目 名称 用户名.github.io 4.在ma</description>
+    </item>
+    
+  </channel>
+</rss>

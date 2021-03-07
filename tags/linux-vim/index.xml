@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux vim on 后会有期</title>
+    <link>https://www.johnyn.com/tags/linux-vim/</link>
+    <description>Recent content in linux vim on 后会有期</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 20 Jun 2014 16:16:05 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/tags/linux-vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vim快捷键命令图解</title>
+      <link>https://www.johnyn.com/2014/06/20/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%91%BD%E4%BB%A4%E5%9B%BE%E8%A7%A3/</link>
+      <pubDate>Fri, 20 Jun 2014 16:16:05 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2014/06/20/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%91%BD%E4%BB%A4%E5%9B%BE%E8%A7%A3/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
