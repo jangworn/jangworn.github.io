@@ -1,3 +1,6 @@
 public/
 themes/ling
 ling
+.env_temp
+.serverless
+serverless.yml

@@ -14,6 +14,7 @@ titleCaseStyle = "Go"
   description = "基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等"
   subTitle = "青山不改，绿水长流 carpe diem"
   qrcode = "/img/qrcode.jpg"
+  ICP = '粤ICP备2021017283号-1'
 [Menus]
   main = [
       {Name = "Github", URL = "https://github.com/jangworn/"}
@@ -24,10 +25,10 @@ titleCaseStyle = "Go"
     guessSyntax = true
     hl_Lines = ""
     lineNoStart = 1
-    lineNos = true
+    lineNos = false
     lineNumbersInTable = false
     noClasses = true
-    style = "monokai"
+    style = "manni"
     tabWidth = 4
 [outputs]
   home = ["HTML", "RSS", "JSON"]
