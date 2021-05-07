@@ -1,7 +1,7 @@
 baseURL = "https://www.johnyn.com/"
 languageCode = "zh-cn"
 title = "后会有期"
-theme="ling"
+theme="hugo-theme-ling"
 paginate = 10
 paginatePath = "page"
 hasCJKLanguage="true"
