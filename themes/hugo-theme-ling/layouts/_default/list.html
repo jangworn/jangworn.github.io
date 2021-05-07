@@ -1,0 +1,28 @@
+{{ define "main" -}}
+{{ $paginator := .Paginate .Data.Pages (index .Site.Params "paginate" | default 10) }}
+{{ range $paginator.Pages.ByDate.Reverse }}
+<article class="post">
+<h1 class="post-title">
+  <a href="{{ .Permalink }}">{{ .Title }}</a>
+</h1>
+<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" class="post-date">{{ .Date.Format "2006-01-02 Mon" }}</time>
+<p>{{ .Summary }}</p>
+{{ if .Truncated }}
+<div class="read-more-link">
+  <a href="{{ .RelPermalink }}">阅读全文</a>
+</div>
+{{ end }}
+<ul class="tag">
+  {{ range (.GetTerms "tags") }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+ {{ end }}
+</ul>
+</article>
+{{ end }}
+
+{{ $paginator := .Paginate (where .Data.Pages "Type" "post") }}
+{{ range $paginator.Pages }}
+  {{ .Render "index" }}
+  {{ end }}
+{{ partial "pagination.html" $paginator }}
+{{- end }}

@@ -1,0 +1,36 @@
+<aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="{{ .Site.BaseURL }}"><h2>{{ .Site.Title }}</h2></a>
+      <p class="lead">
+      {{ with .Site.Params.subTitle }} {{.}} {{ else }}An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.{{end}}
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="{{ .Site.BaseURL }}">主页</a> </li>
+        {{ range .Site.Menus.main -}}
+          <li class="link"><a target="_blank" href="{{.URL}}"> {{ .Name }} </a></li>
+        {{- end }}
+      </ul>
+    </nav>
+    {{ if $.Site.Params.qrcode -}}
+    <div class="qrcode">
+      <img src="{{ $.Site.Params.qrcode }}" alt="">
+    </div>
+    {{- end}}
+  
+
+  <script src="/js/fuse.min.js"></script> <!-- download and copy over fuse.min.js file from fusejs.io -->
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>

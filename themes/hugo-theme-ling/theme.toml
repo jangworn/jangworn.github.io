@@ -1,0 +1,16 @@
+name = "ling"
+license = "MIT"
+licenselink = "https://github.com/jangworn/hugo-theme-ling/blob/master/LICENSE.md"
+description = "An elegant open source and mobile first theme"
+tags = ["blog", "company"]
+features = ["blog", "themes", "disqus"]
+
+[author]
+    name = "jangworn"
+    homepage = "https://github.com/jangworn"
+
+# If Porting existing theme
+[original]
+    author =  "mdo"
+    homepage = "http://markdotto.com/"
+    repo = "https://www.github.com/mdo/hyde"
