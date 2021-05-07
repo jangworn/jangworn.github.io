@@ -1,4 +1,3 @@
-public/
 .env_temp
 .serverless
 serverless.yml
