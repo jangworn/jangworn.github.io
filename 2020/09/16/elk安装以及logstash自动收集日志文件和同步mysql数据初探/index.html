@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELK安装以及logstash自动收集日志文件和同步mysql数据初探 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.321904673%20%2b0000%20UTC%20m%3d%2b0.041650552">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>ELK安装以及logstash自动收集日志文件和同步mysql数据初探</h1>
+  <time datetime=2020-09-16T11:48:44Z class="post-date">2020-09-16 Wed</time>
+  <h2 id="安装">安装</h2>
+<ol>
+<li>
+<p>下载elasticsearch并解压<br>
+<code>wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.8.1-linux-x86_64.tar.gz</code><br>
+<code>tar -zxvf elasticsearch-7.8.1 &amp;&amp; cd elasticsearch-7.8.1</code></p>
+</li>
+<li>
+<p>启动elasticsearch并解压<br>
+<code>./bin/elasticsearch -d</code></p>
+</li>
+<li>
+<p>下载kibana<br>
+<code>wget https://artifacts.elastic.co/downloads/kibana/kibana-7.8.1-linux-x86_64.tar.gz</code><br>
+<code>tar -zxvf kibana-7.8.1-linux-x86_64.tar.gz &amp;&amp; cd kibana-7.8.1-linux-x86_64</code></p>
+</li>
+<li>
+<p>启动kibana<br>
+<code>./bin/kibana</code></p>
+</li>
+<li>
+<p>下载logstash并解压<br>
+<code>wget https://artifacts.elastic.co/downloads/logstash/logstash-7.8.1.tar.gz</code><br>
+<code>tar -zxvf logstash-7.8.1.tar.gz &amp;&amp; cd logstash-7.8.1</code></p>
+</li>
+<li>
+<p>下载mysql-connector-java并解压 <br>
+<code>wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.21.tar.gz</code><br>
+<code>tar -zxvf mysql-connector-java-8.0.21.tar.gz</code></p>
+</li>
+<li>
+<p>新建logstash/config/conf/mysql.conf文件，配置如下</p>
+</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"># 数据库
+input {
+  stdin {
+  }
+  jdbc {
+    jdbc_driver_library =&gt; &#34;/home/ling/logstash-7.8.1/mysql-connector-java-8.0.21-bin.jar&#34;
+    jdbc_driver_class =&gt; &#34;com.mysql.jdbc.Driver&#34;
+    jdbc_connection_string =&gt; &#34;jdbc:mysql://localhost:3306/test&#34;
+    jdbc_user =&gt; &#34;root&#34;
+    jdbc_password =&gt; &#34;111111&#34;
+    schedule =&gt; &#34;* * * * *&#34;
+    statement =&gt; &#34;select id,name,age from user&#34;
+    columns_charset =&gt; {
+       &#34;content&#34; =&gt; &#34;UTF-8&#34;
+    }
+    type =&gt; &#34;user&#34;
+  }
+}
+
+filter {
+   if [type] == &#34;user&#34; {
+       urldecode{
+         all_fields=&gt;true
+       }
+   }
+}
+output {
+  if [type] == &#34;user&#34;{
+  elasticsearch {
+    hosts =&gt; &#34;localhost:9200&#34;
+    index =&gt; &#34;user&#34;
+    document_id =&gt; &#34;%{id}&#34;
+    }
+  }
+}
+</code></pre></div><ol start="8">
+<li>新建logstash/config/conf/log.conf文件，配置如下</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">#日志文件
+input {
+    file {
+        path =&gt; &#34;/home/ling/project/log/*.log&#34;
+        type =&gt; &#34;runtime&#34;
+        start_position =&gt; &#34;beginning&#34; #从文件开始处读写
+    }
+}
+
+filter {
+   if [type] == &#34;runtime&#34; {
+       urldecode{
+         all_fields=&gt;true
+       }
+   }
+}
+output{
+    if [type] == &#34;runtime&#34;{
+
+        elasticsearch {
+          hosts=&gt;[&#34;127.0.0.1:9200&#34;]
+          index =&gt; &#34;runtime_log&#34; #对日志进行索引归档
+        }
+    }
+    stdout{codec =&gt; rubydebug}
+}
+</code></pre></div><ol start="9">
+<li>启动logstash<br>
+<code>./bin/logstash -f config/conf</code></li>
+</ol>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2020/09/15/%E5%9F%BA%E4%BA%8Ehexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E8%BF%81%E7%A7%BB%E5%88%B0hugo%E5%B9%B6%E5%AE%9A%E5%88%B6theme/">基于Hexo的个人博客静态网站迁移到Hugo并定制theme&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2020/09/30/%E7%BD%91%E7%AB%99%E5%8A%A0%E5%85%A5%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E8%B7%B5/">&larr;网站加入搜索引擎实践</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>thinkphp的pgsql模型getLastInsId()获取上次插入的id的bug &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.346526163%20%2b0000%20UTC%20m%3d%2b0.066272042">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>thinkphp的pgsql模型getLastInsId()获取上次插入的id的bug</h1>
+  <time datetime=2014-06-23T14:48:44Z class="post-date">2014-06-23 Mon</time>
+  <p>hinkPHP/Library/Think/Db/Driver 目录下的Pgsql.class.php 的123行</p>
+<p>代码如下</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#555">&lt;?</span>php
+      <span style="color:#c30;font-style:italic">/**
+</span><span style="color:#c30;font-style:italic">      * 用于获取最后插入的ID
+</span><span style="color:#c30;font-style:italic">      * @access public
+</span><span style="color:#c30;font-style:italic">      * @return integer
+</span><span style="color:#c30;font-style:italic">      */</span>
+
+      <span style="color:#069;font-weight:bold">public</span> <span style="color:#069;font-weight:bold">function</span> <span style="color:#c0f">last_insert_id</span>() {
+        <span style="color:#033">$query</span> <span style="color:#555">=</span> <span style="color:#c30">&#34;SELECT LASTVAL() AS insert_id&#34;</span>;
+        <span style="color:#033">$result</span> <span style="color:#555">=</span> pg_query(<span style="color:#033">$this</span><span style="color:#555">-&amp;</span>gt;_linkID,<span style="color:#033">$query</span>);
+        <span style="color:#033">$arr</span> <span style="color:#555">=</span> pg_fetch_array(<span style="color:#033">$result</span>,<span style="color:#069;font-weight:bold">null</span>,PGSQL_ASSOC);
+        <span style="color:#09f;font-style:italic">//list($last_insert_id) = pg_fetch_array($result,null,PGSQL_ASSOC);
+</span><span style="color:#09f;font-style:italic"></span>        pg_free_result(<span style="color:#033">$result</span>);
+        <span style="color:#09f;font-style:italic">// return $last_insert_id;
+</span><span style="color:#09f;font-style:italic"></span>        <span style="color:#069;font-weight:bold">return</span> <span style="color:#033">$arr</span>[<span style="color:#c30">&#39;insert_id&#39;</span>];
+      }
+</code></pre></div><p>注释部分 list($last_insert_id) = pg_fetch_array($result,null,PGSQL_ASSOC); 函数pg_fetch_array 返回的是关联数组  ，用list给变量赋值时返回null</p>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2014/06/21/win7-64%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85jdk%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">WIN7 64位系统安装JDK并配置环境变量&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bexecute%E6%96%B9%E6%B3%95bug/">&larr;thinkphp的pgsql模型execute方法bug</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

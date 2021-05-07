@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mysql postgresql mongodb连接操作 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.340425941%20%2b0000%20UTC%20m%3d%2b0.060171720">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>mysql postgresql mongodb连接操作</h1>
+  <time datetime=2015-06-03T11:48:44Z class="post-date">2015-06-03 Wed</time>
+  <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP">	<span style="color:#555">&lt;?</span>php
+
+	header(<span style="color:#c30">&#39;Content-type:text/html;charset=utf-8&#39;</span>);
+	<span style="color:#033">$conn</span> <span style="color:#555">=</span> mysql_connect(<span style="color:#c30">&#39;localhost&#39;</span>,<span style="color:#c30">&#39;root&#39;</span>,<span style="color:#c30">&#39;111111&#39;</span>);
+	<span style="color:#069;font-weight:bold">if</span>(<span style="color:#555">!</span><span style="color:#033">$conn</span>){
+		<span style="color:#069;font-weight:bold">die</span>(<span style="color:#c30">&#39;&#39;</span>);
+	}
+	mysql_select_db(<span style="color:#c30">&#39;imsl_media&#39;</span>,<span style="color:#033">$conn</span>);
+	mysql_query(<span style="color:#c30">&#39;set names utf8&#39;</span>);
+	<span style="color:#033">$res</span> <span style="color:#555">=</span> mysql_query(<span style="color:#c30">&#39;select * from imsl_singer limit 10&#39;</span>);
+	<span style="color:#069;font-weight:bold">while</span>(<span style="color:#033">$row</span> <span style="color:#555">=</span> mysql_fetch_assoc(<span style="color:#033">$res</span>)){
+		var_dump(<span style="color:#033">$row</span>);
+	}
+	<span style="color:#09f;font-style:italic">//mongo
+</span><span style="color:#09f;font-style:italic"></span>	<span style="color:#033">$mongo</span> <span style="color:#555">=</span> <span style="color:#069;font-weight:bold">new</span> mongo(<span style="color:#c30">&#34;mongodb://root:111111@localhost:27017&#34;</span>);
+	<span style="color:#033">$db</span> <span style="color:#555">=</span> <span style="color:#033">$mongo</span><span style="color:#555">-&gt;</span><span style="color:#309">user</span>;
+	<span style="color:#033">$table</span> <span style="color:#555">=</span> <span style="color:#033">$db</span><span style="color:#555">-&gt;</span><span style="color:#309">user_list</span>;
+	<span style="color:#033">$sort</span>[<span style="color:#c30">&#39;time&#39;</span>] <span style="color:#555">=</span> <span style="color:#f60">1</span>;
+	<span style="color:#033">$a</span> <span style="color:#555">=</span> <span style="color:#033">$table</span><span style="color:#555">-&gt;</span><span style="color:#309">find</span>(<span style="color:#033">$where</span>)<span style="color:#555">-&gt;</span><span style="color:#309">sort</span>(<span style="color:#033">$sort</span>)<span style="color:#555">-&gt;</span><span style="color:#309">limit</span>(<span style="color:#f60">10</span>)<span style="color:#555">-&gt;</span><span style="color:#309">skip</span>(<span style="color:#f60">10</span>);
+	<span style="color:#09f;font-style:italic">//postgresql
+</span><span style="color:#09f;font-style:italic"></span>	<span style="color:#033">$pg</span> <span style="color:#555">=</span> pg_connect(<span style="color:#c30">&#39;host=localhost port=5443 dbname=imsl_media user=root password=bar&#39;</span>);
+	<span style="color:#033">$res</span> <span style="color:#555">=</span> pg_query(<span style="color:#033">$pg</span>,<span style="color:#c30">&#39;select * from imsl_singer limit 10&#39;</span>);
+	<span style="color:#069;font-weight:bold">if</span>(<span style="color:#555">!</span><span style="color:#033">$res</span>){
+		<span style="color:#069;font-weight:bold">die</span>(<span style="color:#c30">&#39;&#39;</span>);
+	}
+	<span style="color:#069;font-weight:bold">if</span>(pg_num_rows(<span style="color:#033">$res</span>)){
+		<span style="color:#069;font-weight:bold">while</span>(<span style="color:#033">$row</span> <span style="color:#555">=</span> pg_fetch_assoc(<span style="color:#033">$res</span>)){
+			var_dump(<span style="color:#033">$row</span>);
+		}
+	}<span style="color:#069;font-weight:bold">else</span>{
+
+	}
+</code></pre></div>
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2015/06/02/memcached%E5%AE%89%E8%A3%85/">memcached安装&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2015/07/15/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAnginx-php-mysql/">&larr;快速搭建nginx&#43;php&#43;mysql</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

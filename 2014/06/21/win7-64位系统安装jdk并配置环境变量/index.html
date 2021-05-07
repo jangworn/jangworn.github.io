@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WIN7 64位系统安装JDK并配置环境变量 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.348691271%20%2b0000%20UTC%20m%3d%2b0.068437050">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>WIN7 64位系统安装JDK并配置环境变量</h1>
+  <time datetime=2014-06-21T11:48:44Z class="post-date">2014-06-21 Sat</time>
+  <p>首先，下载JDK安装包，到官网http://www.oracle.com/technetwork/java/javase/downloads/index.html进行下载，点左边的Java Platform (JDK) 7u51进入下一个下载页面，</p>
+<p>安装好后便是配置JDK的环境变量，在桌面上计算机点右键选属性，或是开始菜单计算机上点右键选属性， 左边点高级系统设置，点下边的环境变量，</p>
+<p>在新弹出窗口上，点系统变量区域下面的新建按钮，弹出新建窗口，变量名为JAVA_HOME，变量值填JDK安装的最终路径，我这里装的地址是D:\Program Files\Java\jdk1.7.0_51，所以填D:\Program Files\Java\jdk1.7.0_51，点确定完成，</p>
+<p>下面需要设置Path变量，由于系统本身已经存在这个变量，所以无需新建，在原本基本上添加JDK相关的，找到Path变量双击编辑，由于每个值之间用;符号间断，所以先在末尾加上;（注意是英文格式的，不要输其他符号空格等），加上;符号后在末尾加入%JAVA_HOME%\bin，点确定完成，</p>
+<p>下面添加CLASSPATH变量，由于不存在，所以新建一个，变量名CLASSPATH，变量值%JAVA_HOME%lib\dt.jar;%JAVA_HOME%\lib\tools.jar，首尾不带空格的，点确定完成，至此环境变量配置完成，点确定关掉环境变量配置窗口。</p>
+<p>上面步骤完成后，下面验证下是否配置成功，点开始运行输入cmd打开命令行窗口，输入java -version，显示版本1.7.0_51，输入javac -version，也显示1.7.0_51，说明JDK安装及环境变量配置成功。</p>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2014/06/20/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%91%BD%E4%BB%A4%E5%9B%BE%E8%A7%A3/">vim快捷键命令图解&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bgetlastinsid%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E6%8F%92%E5%85%A5%E7%9A%84id%E7%9A%84bug/">&larr;thinkphp的pgsql模型getLastInsId()获取上次插入的id的bug</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

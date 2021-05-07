@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简单的js分享代码 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.357743503%20%2b0000%20UTC%20m%3d%2b0.077489382">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>简单的js分享代码</h1>
+  <time datetime=2015-02-09T11:48:44Z class="post-date">2015-02-09 Mon</time>
+  <div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-PHP" data-lang="PHP"><span style="color:#069;font-weight:bold">function</span> <span style="color:#c0f">ToTencent</span>(title,picUrl){
+
+		<span style="color:#069;font-weight:bold">var</span> _t <span style="color:#555">=</span> encodeURI(<span style="color:#c30">&#34;【@xx：&#34;</span><span style="color:#555">+</span>title<span style="color:#555">+</span><span style="color:#c30">&#34;】&#34;</span>);
+
+		<span style="color:#069;font-weight:bold">var</span> _url <span style="color:#555">=</span> encodeURIComponent(document<span style="color:#555">.</span>location);
+
+		<span style="color:#069;font-weight:bold">var</span> _appkey <span style="color:#555">=</span> encodeURI(<span style="color:#c30">&#34;xx&#34;</span>);<span style="color:#09f;font-style:italic">//你从腾讯获得的appkey
+</span><span style="color:#09f;font-style:italic"></span>
+		<span style="color:#069;font-weight:bold">var</span> _pic <span style="color:#555">=</span> encodeURI(picUrl);<span style="color:#09f;font-style:italic">//（例如：var _pic=&#39;图片url1|图片url2|图片url3....）
+</span><span style="color:#09f;font-style:italic"></span>
+		<span style="color:#069;font-weight:bold">var</span> _site <span style="color:#555">=</span> <span style="color:#c30">&#39;&#39;</span>;<span style="color:#09f;font-style:italic">//你的网站地址
+</span><span style="color:#09f;font-style:italic"></span>
+		<span style="color:#069;font-weight:bold">var</span> _u <span style="color:#555">=</span> <span style="color:#c30">&#39;http://v.t.qq.com/share/share.php?url=&#39;</span><span style="color:#555">+</span>_url<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;appkey=&#39;</span><span style="color:#555">+</span>_appkey<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;site=&#39;</span><span style="color:#555">+</span>_site<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;pic=&#39;</span><span style="color:#555">+</span>_pic<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;title=&#39;</span><span style="color:#555">+</span>_t;
+
+		window<span style="color:#555">.</span>open( _u,<span style="color:#c30">&#39;&#39;</span>, <span style="color:#c30">&#39;width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no&#39;</span> );
+
+}
+
+<span style="color:#069;font-weight:bold">function</span> <span style="color:#c0f">ToSina</span>(title,picUrl){
+
+		<span style="color:#069;font-weight:bold">var</span> _t <span style="color:#555">=</span> encodeURI(<span style="color:#c30">&#34;【@xx：&#34;</span><span style="color:#555">+</span>title<span style="color:#555">+</span><span style="color:#c30">&#34;】&#34;</span>);
+
+		<span style="color:#069;font-weight:bold">var</span> _url <span style="color:#555">=</span> encodeURIComponent(document<span style="color:#555">.</span>location);
+
+		<span style="color:#069;font-weight:bold">var</span> _appkey <span style="color:#555">=</span> encodeURI(<span style="color:#c30">&#34;xx&#34;</span>);<span style="color:#09f;font-style:italic">//你从微薄获得的appkey
+</span><span style="color:#09f;font-style:italic"></span>
+		<span style="color:#069;font-weight:bold">var</span> _pic <span style="color:#555">=</span> encodeURI(picUrl);
+
+		<span style="color:#069;font-weight:bold">var</span> _site <span style="color:#555">=</span> <span style="color:#c30">&#39;&#39;</span>;<span style="color:#09f;font-style:italic">//你的网站地址
+</span><span style="color:#09f;font-style:italic"></span>
+		<span style="color:#069;font-weight:bold">var</span> _u <span style="color:#555">=</span> <span style="color:#c30">&#39;http://service.weibo.com/share/share.php?url=&#39;</span><span style="color:#555">+</span>_url<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;appkey=&#39;</span><span style="color:#555">+</span>_appkey<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;pic=&#39;</span><span style="color:#555">+</span>_pic<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;title=&#39;</span><span style="color:#555">+</span>_t;
+
+		window<span style="color:#555">.</span>open( _u,<span style="color:#c30">&#39;&#39;</span>, <span style="color:#c30">&#39;width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no&#39;</span> );
+
+}
+
+<span style="color:#069;font-weight:bold">function</span> <span style="color:#c0f">Torenren</span>(title,picUrl,description){
+
+		<span style="color:#069;font-weight:bold">var</span> _t <span style="color:#555">=</span> encodeURI(<span style="color:#c30">&#34;【xx：&#34;</span><span style="color:#555">+</span>title<span style="color:#555">+</span><span style="color:#c30">&#34;】&#34;</span>);
+
+		<span style="color:#069;font-weight:bold">var</span> _url <span style="color:#555">=</span> encodeURIComponent(document<span style="color:#555">.</span>location);
+
+		<span style="color:#069;font-weight:bold">var</span> _appkey <span style="color:#555">=</span> encodeURI(<span style="color:#c30">&#34;xx&#34;</span>);<span style="color:#09f;font-style:italic">//你从微薄获得的appkey
+</span><span style="color:#09f;font-style:italic"></span>
+		<span style="color:#069;font-weight:bold">var</span> _pic <span style="color:#555">=</span> encodeURI(picUrl);
+
+		<span style="color:#069;font-weight:bold">var</span> _site <span style="color:#555">=</span> <span style="color:#c30">&#39;&#39;</span>;<span style="color:#09f;font-style:italic">//你的网站地址
+</span><span style="color:#09f;font-style:italic"></span>
+		<span style="color:#069;font-weight:bold">var</span> _d <span style="color:#555">=</span> <span style="color:#555">!</span>description<span style="color:#555">?</span> encodeURI(title) <span style="color:#555">:</span> encodeURI(description);
+
+		<span style="color:#09f;font-style:italic">//var _u = &#39;http://share.renren.com/share/buttonshare.do?title=&#39;+_t+&#39;&amp;link=&#39;+_url+&#39;&amp;pic=&#39;+_pic;
+</span><span style="color:#09f;font-style:italic"></span>
+		<span style="color:#069;font-weight:bold">var</span> _u <span style="color:#555">=</span> <span style="color:#c30">&#39;http://widget.renren.com/dialog/share?resourceUrl=&#39;</span><span style="color:#555">+</span>_url<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;srcUrl=&#39;</span><span style="color:#555">+</span>_url<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;title=&#39;</span><span style="color:#555">+</span>_t<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;pic=&#39;</span><span style="color:#555">+</span>_pic<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;description=&#39;</span><span style="color:#555">+</span>_d;
+
+		window<span style="color:#555">.</span>open( _u,<span style="color:#c30">&#39;&#39;</span>, <span style="color:#c30">&#39;width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no&#39;</span> );
+
+}
+
+<span style="color:#069;font-weight:bold">function</span> <span style="color:#c0f">Tozone</span>(title,picUrl,description){
+
+		<span style="color:#069;font-weight:bold">var</span> _t <span style="color:#555">=</span> encodeURI(<span style="color:#c30">&#34;【xx：&#34;</span><span style="color:#555">+</span>title<span style="color:#555">+</span><span style="color:#c30">&#34;】&#34;</span>);
+
+		<span style="color:#069;font-weight:bold">var</span> _url <span style="color:#555">=</span> encodeURIComponent(document<span style="color:#555">.</span>location);
+
+		<span style="color:#069;font-weight:bold">var</span> _pic <span style="color:#555">=</span> encodeURI(picUrl);
+
+		<span style="color:#069;font-weight:bold">var</span> _site <span style="color:#555">=</span> <span style="color:#c30">&#39;&#39;</span>;<span style="color:#09f;font-style:italic">//你的网站地址
+</span><span style="color:#09f;font-style:italic"></span>
+		<span style="color:#069;font-weight:bold">var</span> _d <span style="color:#555">=</span> <span style="color:#555">!</span>description<span style="color:#555">?</span> encodeURI(title) <span style="color:#555">:</span> encodeURI(description);
+
+		<span style="color:#069;font-weight:bold">var</span> _u <span style="color:#555">=</span> <span style="color:#c30">&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;</span><span style="color:#555">+</span>_url<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;title=&#39;</span><span style="color:#555">+</span>_t<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;pics=&#39;</span><span style="color:#555">+</span>_pic<span style="color:#555">+</span><span style="color:#c30">&#39;&amp;desc=&#39;</span><span style="color:#555">+</span>_d;
+
+		window<span style="color:#555">.</span>open( _u,<span style="color:#c30">&#39;&#39;</span>, <span style="color:#c30">&#39;width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no&#39;</span> );
+		
+}
+</code></pre></div>
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2015/01/23/php%E5%AE%9E%E7%8E%B0%E4%B8%8B%E8%BD%BD%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E4%B8%8D%E4%B9%B1%E7%A0%81/">php实现下载中文文件不乱码&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2015/02/12/%E7%BD%91%E5%85%B3%E7%9A%84%E8%A7%A3%E9%87%8A/">&larr;网关的解释</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

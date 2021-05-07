@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>golang解析json &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.327950095%20%2b0000%20UTC%20m%3d%2b0.047695874">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>golang解析json</h1>
+  <time datetime=2021-05-03T23:40:58Z class="post-date">2021-05-03 Mon</time>
+  <h2 id="golang解析json常用的方法有2种">golang解析json常用的方法有2种</h2>
+<h3 id="定义struct">定义struct</h3>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#069;font-weight:bold">package</span> main
+
+<span style="color:#069;font-weight:bold">import</span> (
+	<span style="color:#c30">&#34;encoding/json&#34;</span>
+	<span style="color:#c30">&#34;fmt&#34;</span>
+)
+
+<span style="color:#069;font-weight:bold">type</span> Student <span style="color:#069;font-weight:bold">struct</span> {
+	Name <span style="color:#078;font-weight:bold">string</span> <span style="color:#c30">`json:&#34;Name&#34;`</span>
+	Age  <span style="color:#078;font-weight:bold">int</span>    <span style="color:#c30">`json:&#34;Age&#34;`</span>
+	Sex  <span style="color:#078;font-weight:bold">string</span> <span style="color:#c30">`json:&#34;Sex&#34;`</span>
+}
+<span style="color:#069;font-weight:bold">type</span> Class <span style="color:#069;font-weight:bold">struct</span> {
+	ClassName <span style="color:#078;font-weight:bold">string</span> <span style="color:#c30">`json:&#34;ClassName&#34;`</span>
+	Students  []Student
+}
+<span style="color:#069;font-weight:bold">type</span> School <span style="color:#069;font-weight:bold">struct</span> {
+	SchoolName <span style="color:#078;font-weight:bold">string</span>
+	Id         <span style="color:#078;font-weight:bold">int64</span> <span style="color:#c30">`json:&#34;Id&#34;`</span>
+	Class      <span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]Class
+}
+
+<span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">main</span>() {
+
+	jsonData <span style="color:#555">:=</span> []<span style="color:#366">byte</span>(<span style="color:#c30">`
+</span><span style="color:#c30">    {
+</span><span style="color:#c30">        &#34;SchoolName&#34;: &#34;Standard&#34;,
+</span><span style="color:#c30">        &#34;Class&#34; : {
+</span><span style="color:#c30">			&#34;1&#34;: {
+</span><span style="color:#c30">				&#34;ClassName&#34;: &#34;一年级1班&#34;,
+</span><span style="color:#c30">				&#34;Students&#34;: [
+</span><span style="color:#c30">					{
+</span><span style="color:#c30">						&#34;Name&#34;:&#34;小明&#34;,
+</span><span style="color:#c30">						&#34;Age&#34;:5,
+</span><span style="color:#c30">						&#34;Sex&#34;:&#34;男&#34;
+</span><span style="color:#c30">					},
+</span><span style="color:#c30">					{
+</span><span style="color:#c30">						&#34;Name&#34;:&#34;小花&#34;,
+</span><span style="color:#c30">						&#34;Age&#34;:5,
+</span><span style="color:#c30">						&#34;Sex&#34;:&#34;女&#34;
+</span><span style="color:#c30">					}
+</span><span style="color:#c30">				]
+</span><span style="color:#c30">			},
+</span><span style="color:#c30">			&#34;2&#34;: {
+</span><span style="color:#c30">				&#34;ClassName&#34;: &#34;一年级2班&#34;,
+</span><span style="color:#c30">				&#34;Students&#34;: [
+</span><span style="color:#c30">					{
+</span><span style="color:#c30">						&#34;Name&#34;:&#34;小强&#34;,
+</span><span style="color:#c30">						&#34;Age&#34;:6,
+</span><span style="color:#c30">						&#34;Sex&#34;:&#34;男&#34;
+</span><span style="color:#c30">					},
+</span><span style="color:#c30">					{
+</span><span style="color:#c30">						&#34;Name&#34;:&#34;小刚&#34;,
+</span><span style="color:#c30">						&#34;Age&#34;:5,
+</span><span style="color:#c30">						&#34;Sex&#34;:&#34;男&#34;
+</span><span style="color:#c30">					}
+</span><span style="color:#c30">				]
+</span><span style="color:#c30">			}
+</span><span style="color:#c30">        },
+</span><span style="color:#c30">        &#34;Id&#34;: 999
+</span><span style="color:#c30">    }`</span>)
+
+	<span style="color:#069;font-weight:bold">var</span> s School
+	err <span style="color:#555">:=</span> json.<span style="color:#c0f">Unmarshal</span>(jsonData, <span style="color:#555">&amp;</span>s)
+	<span style="color:#069;font-weight:bold">if</span> err <span style="color:#555">!=</span> <span style="color:#069;font-weight:bold">nil</span> {
+		fmt.<span style="color:#c0f">Println</span>(err)
+	}
+	<span style="color:#069;font-weight:bold">for</span> _, class <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">range</span> s.Class {
+		fmt.<span style="color:#c0f">Println</span>(class.ClassName)
+		<span style="color:#069;font-weight:bold">for</span> _, student <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">range</span> class.Students {
+			fmt.<span style="color:#c0f">Println</span>(student.Name, student.Age, student.Sex)
+		}
+	}
+}
+
+
+</code></pre></div><h3 id="使用interface类型断言">使用interface类型断言</h3>
+<p>switch 和 for要嵌套很多层</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#069;font-weight:bold">package</span> main
+
+<span style="color:#069;font-weight:bold">import</span> (
+	<span style="color:#c30">&#34;encoding/json&#34;</span>
+	<span style="color:#c30">&#34;fmt&#34;</span>
+	<span style="color:#c30">&#34;time&#34;</span>
+)
+
+<span style="color:#069;font-weight:bold">func</span> <span style="color:#c0f">main</span>() {
+
+	jsonData <span style="color:#555">:=</span> []<span style="color:#366">byte</span>(<span style="color:#c30">`
+</span><span style="color:#c30">    {
+</span><span style="color:#c30">        &#34;SchoolName&#34;: &#34;Standard&#34;,
+</span><span style="color:#c30">        &#34;Class&#34; : {
+</span><span style="color:#c30">			&#34;1&#34;: {
+</span><span style="color:#c30">				&#34;ClassName&#34;: &#34;一年级1班&#34;,
+</span><span style="color:#c30">				&#34;Students&#34;: [
+</span><span style="color:#c30">					{
+</span><span style="color:#c30">						&#34;Name&#34;:&#34;小明&#34;,
+</span><span style="color:#c30">						&#34;Age&#34;:5,
+</span><span style="color:#c30">						&#34;Sex&#34;:&#34;男&#34;
+</span><span style="color:#c30">					},
+</span><span style="color:#c30">					{
+</span><span style="color:#c30">						&#34;Name&#34;:&#34;小花&#34;,
+</span><span style="color:#c30">						&#34;Age&#34;:5,
+</span><span style="color:#c30">						&#34;Sex&#34;:&#34;女&#34;
+</span><span style="color:#c30">					}
+</span><span style="color:#c30">				]
+</span><span style="color:#c30">			},
+</span><span style="color:#c30">			&#34;2&#34;: {
+</span><span style="color:#c30">				&#34;ClassName&#34;: &#34;一年级2班&#34;,
+</span><span style="color:#c30">				&#34;Students&#34;: [
+</span><span style="color:#c30">					{
+</span><span style="color:#c30">						&#34;Name&#34;:&#34;小强&#34;,
+</span><span style="color:#c30">						&#34;Age&#34;:6,
+</span><span style="color:#c30">						&#34;Sex&#34;:&#34;男&#34;
+</span><span style="color:#c30">					},
+</span><span style="color:#c30">					{
+</span><span style="color:#c30">						&#34;Name&#34;:&#34;小刚&#34;,
+</span><span style="color:#c30">						&#34;Age&#34;:5,
+</span><span style="color:#c30">						&#34;Sex&#34;:&#34;男&#34;
+</span><span style="color:#c30">					}
+</span><span style="color:#c30">				]
+</span><span style="color:#c30">			}
+</span><span style="color:#c30">        },
+</span><span style="color:#c30">        &#34;Id&#34;: 999
+</span><span style="color:#c30">    }`</span>)
+	<span style="color:#069;font-weight:bold">var</span> i <span style="color:#069;font-weight:bold">interface</span>{}
+	json.<span style="color:#c0f">Unmarshal</span>(jsonData, <span style="color:#555">&amp;</span>i)
+	data <span style="color:#555">:=</span> i.(<span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]<span style="color:#069;font-weight:bold">interface</span>{})
+	<span style="color:#069;font-weight:bold">for</span> k, v <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">range</span> data {
+		<span style="color:#069;font-weight:bold">switch</span> v <span style="color:#555">:=</span> v.(<span style="color:#069;font-weight:bold">type</span>) {
+		<span style="color:#069;font-weight:bold">case</span> <span style="color:#078;font-weight:bold">string</span>:
+			fmt.<span style="color:#c0f">Println</span>(<span style="color:#c30">&#34;string&#34;</span>, k, v)
+		<span style="color:#069;font-weight:bold">case</span> []<span style="color:#069;font-weight:bold">interface</span>{}:
+			<span style="color:#09f;font-style:italic">//fmt.Println(&#34;array[]&#34;, k)
+</span><span style="color:#09f;font-style:italic"></span>			<span style="color:#069;font-weight:bold">for</span> kk, vv <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">range</span> v {
+				fmt.<span style="color:#c0f">Println</span>(kk, vv)
+			}
+		<span style="color:#069;font-weight:bold">case</span> <span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]<span style="color:#069;font-weight:bold">interface</span>{}:
+			<span style="color:#09f;font-style:italic">//fmt.Println(&#34;array[string]&#34;)
+</span><span style="color:#09f;font-style:italic"></span>			<span style="color:#069;font-weight:bold">for</span> kk, vv <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">range</span> v {
+				<span style="color:#069;font-weight:bold">switch</span> vv <span style="color:#555">:=</span> vv.(<span style="color:#069;font-weight:bold">type</span>) {
+				<span style="color:#069;font-weight:bold">case</span> <span style="color:#078;font-weight:bold">string</span>:
+					fmt.<span style="color:#c0f">Println</span>(<span style="color:#c30">&#34;string&#34;</span>, kk, vv)
+				<span style="color:#069;font-weight:bold">case</span> []<span style="color:#069;font-weight:bold">interface</span>{}:
+					<span style="color:#09f;font-style:italic">//fmt.Println(&#34;array[]&#34;, kk)
+</span><span style="color:#09f;font-style:italic"></span>				<span style="color:#069;font-weight:bold">case</span> <span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]<span style="color:#069;font-weight:bold">interface</span>{}:
+					<span style="color:#09f;font-style:italic">//fmt.Println(&#34;array[string]&#34;, kk)
+</span><span style="color:#09f;font-style:italic"></span>					<span style="color:#069;font-weight:bold">for</span> kkk, vvv <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">range</span> vv {
+						<span style="color:#069;font-weight:bold">switch</span> vvv <span style="color:#555">:=</span> vvv.(<span style="color:#069;font-weight:bold">type</span>) {
+						<span style="color:#069;font-weight:bold">case</span> <span style="color:#078;font-weight:bold">string</span>:
+							fmt.<span style="color:#c0f">Println</span>(<span style="color:#c30">&#34;string&#34;</span>, kkk, vvv)
+						<span style="color:#069;font-weight:bold">case</span> []<span style="color:#069;font-weight:bold">interface</span>{}:
+							<span style="color:#069;font-weight:bold">for</span> kkkk, vvvv <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">range</span> vvv {
+								<span style="color:#069;font-weight:bold">switch</span> vvvv <span style="color:#555">:=</span> vvvv.(<span style="color:#069;font-weight:bold">type</span>) {
+								<span style="color:#069;font-weight:bold">case</span> <span style="color:#078;font-weight:bold">string</span>:
+									fmt.<span style="color:#c0f">Println</span>(kkkk)
+								<span style="color:#069;font-weight:bold">case</span> <span style="color:#069;font-weight:bold">map</span>[<span style="color:#078;font-weight:bold">string</span>]<span style="color:#069;font-weight:bold">interface</span>{}:
+									<span style="color:#069;font-weight:bold">for</span> kkkkk, vvvvv <span style="color:#555">:=</span> <span style="color:#069;font-weight:bold">range</span> vvvv {
+										fmt.<span style="color:#c0f">Println</span>(kkkkk, vvvvv)
+									}
+								}
+							}
+						<span style="color:#069;font-weight:bold">default</span>:
+						}
+					}
+				<span style="color:#069;font-weight:bold">default</span>:
+					fmt.<span style="color:#c0f">Println</span>(<span style="color:#c30">&#34; &#34;</span>)
+				}
+			}
+		<span style="color:#069;font-weight:bold">default</span>:
+			fmt.<span style="color:#c0f">Println</span>(k, v)
+		}
+	}
+	fmt.<span style="color:#c0f">Println</span>(time.<span style="color:#c0f">Now</span>())
+
+}
+</code></pre></div>
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2020/09/30/%E7%BD%91%E7%AB%99%E5%8A%A0%E5%85%A5%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E8%B7%B5/">网站加入搜索引擎实践&rarr;</a>
+    
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

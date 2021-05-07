@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>基于Hexo的个人博客静态网站迁移到Hugo并定制theme &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.350918379%20%2b0000%20UTC%20m%3d%2b0.070664258">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>基于Hexo的个人博客静态网站迁移到Hugo并定制theme</h1>
+  <time datetime=2020-09-15T16:16:05Z class="post-date">2020-09-15 Tue</time>
+  <blockquote>
+<p>迁移的原因：Hugo生成静态页面速度飞快，相比基于node.js的Hexo快太多了</p>
+</blockquote>
+<h2 id="首先安装hugo">首先安装Hugo</h2>
+<p>安装方式以及运行方式看官方网站：<a href="https://gohugo.io">gohugo.io</a>，或者<a href="https://www.gohugo.org/">gohugo.org</a></p>
+<h2 id="博文md文件迁移">博文md文件迁移</h2>
+<ol>
+<li>把Hexo目录下的博文md文件拷贝到<!-- raw HTML omitted -->hugo运行目录/content/post<!-- raw HTML omitted -->目录</li>
+<li>确保文件开头内容格式如下,否则title、date、tags可能会提取错误<br>
+2.1  date的格式是YYYY-mm-dd, tags的格式是数组</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">---
+title: 标题
+date: 2020-09-15 16:16:05
+tags: [&#34;hexo&#34;,&#34;hugo&#34;,&#34;theme&#34;]  
+---
+</code></pre></div><h2 id="theme定制">theme定制</h2>
+<h4 id="以官网推荐主题hydehttpsgithubcomspf13hyde为例">以官网推荐主题<a href="https://github.com/spf13/hyde">hyde</a>为例</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">cd themes
+git clone https://github.com/spf13/hyde.git
+#目录结构如下
+├── CHANGELOG.md
+├── LICENSE.md
+├── README.md
+├── archetypes
+│   └── default.md
+├── go.mod
+├── images
+│   ├── screenshot.png
+│   └── tn.png
+├── layouts
+│   ├── 404.html
+│   ├── _default
+│   │   ├── baseof.html
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── index.html
+│   └── partials
+│       ├── head.html
+│       ├── head_fonts.html
+│       ├── hook_head_end.html
+│       └── sidebar.html
+├── static
+│   ├── apple-touch-icon-144-precomposed.png
+│   ├── css
+│   │   ├── hyde.css
+│   │   ├── poole.css
+│   │   ├── print.css
+│   │   └── syntax.css
+│   └── favicon.png
+└── theme.toml
+</code></pre></div><h4 id="增加搜索功能">增加搜索功能</h4>
+<ul>
+<li>参考网上分享的方法，使用fuse.min.js</li>
+</ul>
+<h4 id="修改css">修改css</h4>
+<h4 id="增加翻页功能">增加翻页功能</h4>
+<ul>
+<li>layouts/index.html #增加内容</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{{ $paginator := .Paginate (where .Data.Pages &#34;Type&#34; &#34;post&#34;) }}
+{{ range $paginator.Pages }}
+    {{ .Render &#34;index&#34; }}
+    {{ end }}
+{{ partial &#34;pagination.html&#34; $paginator }}
+</code></pre></div><ul>
+<li>layouts/partials/pagination.html #增加模板文件</li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;nav class=&#34;pagination&#34;&gt;
+	{{if .HasPrev}}
+	    &lt;a class=&#34;newer-posts&#34; href=&#34;{{ .Prev.URL }}&#34;&gt;&amp;larr; 上一页&lt;/a&gt;
+	{{end}}
+	&lt;span class=&#34;page-number&#34;&gt;Page {{ .PageNumber }} of {{.TotalPages}}&lt;/span&gt;
+	{{if .HasNext}}
+	    &lt;a class=&#34;older-posts&#34; href=&#34;{{ .Next.URL }}&#34;&gt;下一页 &amp;rarr;&lt;/a&gt;
+	{{end}}
+&lt;/nav&gt;
+</code></pre></div><h2 id="定制theme后的目录结构">定制theme后的目录结构</h2>
+<ul>
+<li>theme以开源<a href="https://github.com/jangworn/hugo-theme-ling">hugo-theme-ling</a></li>
+</ul>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">├── LICENSE
+├── README.md
+├── archetypes
+│   └── default.md
+├── images
+│   └── theme.png
+├── layouts
+│   ├── 404.html
+│   ├── _default
+│   │   ├── baseof.html #base模板
+│   │   ├── index.json  #搜索要用到
+│   │   ├── list.html   #tag列表页
+│   │   └── single.html #博文详情页
+│   ├── index.html
+│   └── partials
+│       ├── footer.html #网站footer
+│       ├── head.html   #网站header
+│       ├── pagination.html #翻页
+│       └── sidebar.html #sidebar
+├── static
+│   ├── css
+│   │   └── style.css #style
+│   ├── favicon.png
+│   ├── img
+│   └── js
+│       ├── fuse.min.js #搜索要用到
+│       └── search.js   #搜索要用到
+└── theme.toml
+</code></pre></div>
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2020/06/03/git%E4%BF%AE%E6%94%B9%E5%B7%B2commit%E7%9A%84name%E5%92%8Cemail/">git修改已commit的name和email&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2020/09/16/elk%E5%AE%89%E8%A3%85%E4%BB%A5%E5%8F%8Alogstash%E8%87%AA%E5%8A%A8%E6%94%B6%E9%9B%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E5%92%8C%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%9D%E6%8E%A2/">&larr;ELK安装以及logstash自动收集日志文件和同步mysql数据初探</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elasticsearch查询语句 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.321801973%20%2b0000%20UTC%20m%3d%2b0.041547852">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Elasticsearch查询语句</h1>
+  <time datetime=2018-01-02T23:40:58Z class="post-date">2018-01-02 Tue</time>
+  <blockquote>
+<p>假设mysql有一个article表，字段:id,title,content,author,time(int类型),comment_count。同时Elasticsearch有个索引article和mysql的字段相同</p>
+</blockquote>
+<h4 id="查看-article-内容">查看 article 内容</h4>
+<p>按照 time 降序排列，从 0 开始显示 20<br>
+类似 mysql 的 sql 语句:</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#555">*</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">from</span><span style="color:#bbb"> </span>article<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">order</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">by</span><span style="color:#bbb"> </span>time<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">desc</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">limit</span><span style="color:#bbb"> </span><span style="color:#f60">0</span>,<span style="color:#f60">20</span>;<span style="color:#bbb">
+</span></code></pre></div><blockquote>
+<p>kibana</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">GET</span> <span style="color:#a00;background-color:#faa">article/_search</span>
+{
+  <span style="color:#309;font-weight:bold">&#34;query&#34;</span>: {
+    <span style="color:#309;font-weight:bold">&#34;match_all&#34;</span>: {}
+  },
+  <span style="color:#309;font-weight:bold">&#34;sort&#34;</span>: [
+    {
+      <span style="color:#309;font-weight:bold">&#34;time&#34;</span>: {
+        <span style="color:#309;font-weight:bold">&#34;order&#34;</span>: <span style="color:#c30">&#34;desc&#34;</span>
+      }
+    }
+  ],
+  <span style="color:#309;font-weight:bold">&#34;size&#34;</span>: <span style="color:#f60">20</span>,
+  <span style="color:#309;font-weight:bold">&#34;from&#34;</span>: <span style="color:#f60">0</span>
+}
+</code></pre></div><h4 id="查找加入条件">查找加入条件</h4>
+<p>类似 mysql 语句：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#555">*</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">from</span><span style="color:#bbb"> </span>article<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">where</span><span style="color:#bbb"> </span>time<span style="color:#bbb"> </span><span style="color:#555">&gt;</span><span style="color:#bbb"> </span><span style="color:#f60">1589252400</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">and</span><span style="color:#bbb"> </span>author<span style="color:#555">=</span><span style="color:#c30">&#39;john&#39;</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">order</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">by</span><span style="color:#bbb"> </span>time<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">asc</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">limit</span><span style="color:#bbb"> </span><span style="color:#f60">20</span>;<span style="color:#bbb">
+</span></code></pre></div><blockquote>
+<p>kibana</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">GET</span> <span style="color:#a00;background-color:#faa">article/_search</span>
+{
+  <span style="color:#309;font-weight:bold">&#34;size&#34;</span>: <span style="color:#f60">20</span>,
+  <span style="color:#309;font-weight:bold">&#34;sort&#34;</span>: [
+    {
+      <span style="color:#309;font-weight:bold">&#34;time&#34;</span>: {
+        <span style="color:#309;font-weight:bold">&#34;order&#34;</span>: <span style="color:#c30">&#34;asc&#34;</span>
+      }
+    }
+  ],
+  <span style="color:#309;font-weight:bold">&#34;query&#34;</span>: {
+    <span style="color:#309;font-weight:bold">&#34;bool&#34;</span>: {
+      <span style="color:#309;font-weight:bold">&#34;filter&#34;</span>: {
+        <span style="color:#309;font-weight:bold">&#34;bool&#34;</span>: {
+          <span style="color:#309;font-weight:bold">&#34;must&#34;</span>:[
+             {
+               <span style="color:#309;font-weight:bold">&#34;range&#34;</span>:{
+                 <span style="color:#309;font-weight:bold">&#34;time&#34;</span>:{
+                   <span style="color:#309;font-weight:bold">&#34;gt&#34;</span>:<span style="color:#f60">1589252400</span>
+                 }
+               }
+             },
+             {
+               <span style="color:#309;font-weight:bold">&#34;term&#34;</span>:{
+                 <span style="color:#309;font-weight:bold">&#34;author&#34;</span>:<span style="color:#c30">&#34;john&#34;</span>
+               }
+             }
+
+           ]
+
+        }
+      }
+    }
+  }
+}
+</code></pre></div><h4 id="or-查询">or 查询</h4>
+<p>类似 mysql 语句：</p>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#555">*</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">from</span><span style="color:#bbb"> </span>article<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">where</span><span style="color:#bbb"> </span>author<span style="color:#555">=</span><span style="color:#c30">&#39;lucy&#39;</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">or</span><span style="color:#bbb"> </span>author<span style="color:#555">=</span><span style="color:#c30">&#39;john&#39;</span><span style="color:#bbb"> </span>;<span style="color:#bbb">
+</span></code></pre></div><blockquote>
+<p>kibana</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">GET</span> <span style="color:#a00;background-color:#faa">article/_search</span>
+{
+  <span style="color:#309;font-weight:bold">&#34;query&#34;</span>: {
+    <span style="color:#309;font-weight:bold">&#34;bool&#34;</span>: {
+      <span style="color:#309;font-weight:bold">&#34;filter&#34;</span>: {
+        <span style="color:#309;font-weight:bold">&#34;bool&#34;</span>: {
+          <span style="color:#309;font-weight:bold">&#34;should&#34;</span>:[
+             {
+               <span style="color:#309;font-weight:bold">&#34;term&#34;</span>:{
+                 <span style="color:#309;font-weight:bold">&#34;author&#34;</span>:<span style="color:#c30">&#34;john&#34;</span>
+               }
+             },
+             {
+               <span style="color:#309;font-weight:bold">&#34;term&#34;</span>:{
+                 <span style="color:#309;font-weight:bold">&#34;author&#34;</span>:<span style="color:#c30">&#34;lucy&#34;</span>
+               }
+             }
+             ]
+
+        }
+      }
+    }
+  }
+}
+</code></pre></div><h4 id="聚合查询">聚合查询</h4>
+<ol>
+<li>按照天聚合查询每天评论数最大的<br>
+类似 mysql 语句：</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">SELECT</span><span style="color:#bbb"> </span>FROM_UNIXTIME(time,<span style="color:#c30">&#39;%Y-%m-%d&#39;</span>)<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#366">date</span>,<span style="color:#069;font-weight:bold">MAX</span>(comment_number)<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">max</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">FROM</span><span style="color:#bbb"> </span><span style="color:#555">`</span>article<span style="color:#555">`</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">GROUP</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">BY</span><span style="color:#bbb"> </span>FROM_UNIXTIME(time,<span style="color:#c30">&#39;%Y-%m-%d&#39;</span>)<span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">ORDER</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#366">date</span>;<span style="color:#bbb">
+</span></code></pre></div><blockquote>
+<p>kibana</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">GET</span> <span style="color:#a00;background-color:#faa">article/_search</span>
+{
+  <span style="color:#309;font-weight:bold">&#34;query&#34;</span>: {
+
+  },
+  	<span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>:{
+         <span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>:{
+             <span style="color:#309;font-weight:bold">&#34;date_histogram&#34;</span>:{
+                 <span style="color:#309;font-weight:bold">&#34;field&#34;</span>:<span style="color:#c30">&#34;time&#34;</span>,
+                 <span style="color:#309;font-weight:bold">&#34;interval&#34;</span>:<span style="color:#c30">&#34;1d&#34;</span>,
+                 <span style="color:#309;font-weight:bold">&#34;format&#34;</span>:<span style="color:#c30">&#34;yyyy-MM-dd&#34;</span>,
+                 <span style="color:#309;font-weight:bold">&#34;time_zone&#34;</span>:<span style="color:#c30">&#34;Asia/Shanghai&#34;</span>,
+                 <span style="color:#309;font-weight:bold">&#34;script&#34;</span>:{
+                   <span style="color:#309;font-weight:bold">&#34;inline&#34;</span>:<span style="color:#c30">&#34;doc[&#39;time&#39;].value * 1000&#34;</span>,
+                   <span style="color:#309;font-weight:bold">&#34;lang&#34;</span>:<span style="color:#c30">&#34;painless&#34;</span>
+                 },
+                 <span style="color:#309;font-weight:bold">&#34;min_doc_count&#34;</span>:<span style="color:#f60">0</span>
+             },
+             <span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>:{
+                 <span style="color:#309;font-weight:bold">&#34;avg&#34;</span>:{
+                    <span style="color:#309;font-weight:bold">&#34;max&#34;</span> : {
+                      <span style="color:#309;font-weight:bold">&#34;field&#34;</span> : <span style="color:#c30">&#34;comment_number&#34;</span> }
+                 }
+             }
+         }
+     }
+}
+</code></pre></div><ol start="2">
+<li>按照 author 统计每个人写的文章平均评论数量<br>
+类似 mysql 语句：</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">select</span><span style="color:#bbb"> </span>author,<span style="color:#069;font-weight:bold">AVG</span>(comment_number)<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">from</span><span style="color:#bbb"> </span>article<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">group</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">by</span><span style="color:#bbb"> </span>author<span style="color:#bbb">
+</span></code></pre></div><blockquote>
+<p>kibana</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">GET</span> <span style="color:#a00;background-color:#faa">article/_search</span>
+{
+  <span style="color:#309;font-weight:bold">&#34;query&#34;</span>: {
+
+  },
+  <span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>: {
+    <span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>: {
+      <span style="color:#309;font-weight:bold">&#34;terms&#34;</span>:{
+        <span style="color:#309;font-weight:bold">&#34;field&#34;</span>:<span style="color:#c30">&#34;author&#34;</span>,
+        <span style="color:#309;font-weight:bold">&#34;size&#34;</span>:<span style="color:#f60">999</span>
+      },
+      <span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>:{
+        <span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>:{
+          <span style="color:#309;font-weight:bold">&#34;avg&#34;</span>: {
+            <span style="color:#309;font-weight:bold">&#34;field&#34;</span>: <span style="color:#c30">&#34;comment_number&#34;</span>
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre></div><ol start="3">
+<li>按照时间统计 author 的数量<br>
+类似 mysql 语句：</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#069;font-weight:bold">SELECT</span><span style="color:#bbb"> </span>FROM_UNIXTIME(time,<span style="color:#c30">&#39;%Y-%m-%d&#39;</span>)<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#366">date</span>,<span style="color:#069;font-weight:bold">count</span>(<span style="color:#069;font-weight:bold">DISTINCT</span><span style="color:#bbb"> </span>author)<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">count</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">FROM</span><span style="color:#bbb"> </span><span style="color:#555">`</span>article<span style="color:#555">`</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">GROUP</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">BY</span><span style="color:#bbb"> </span>FROM_UNIXTIME(time,<span style="color:#c30">&#39;%Y-%m-%d&#39;</span>)<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">ORDER</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#366">date</span>;<span style="color:#bbb">
+</span></code></pre></div><blockquote>
+<p>kibana</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">GET</span> <span style="color:#a00;background-color:#faa">article/_search</span>
+{
+  <span style="color:#309;font-weight:bold">&#34;query&#34;</span>: {
+
+  },
+ <span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>:{
+    <span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>:{
+        <span style="color:#309;font-weight:bold">&#34;date_histogram&#34;</span>:{
+            <span style="color:#309;font-weight:bold">&#34;field&#34;</span>:<span style="color:#c30">&#34;time&#34;</span>,
+            <span style="color:#309;font-weight:bold">&#34;interval&#34;</span>:<span style="color:#c30">&#34;1d&#34;</span>,
+            <span style="color:#309;font-weight:bold">&#34;format&#34;</span>:<span style="color:#c30">&#34;yyyy-MM-dd&#34;</span>,
+            <span style="color:#309;font-weight:bold">&#34;time_zone&#34;</span>:<span style="color:#c30">&#34;Asia/Shanghai&#34;</span>,
+            <span style="color:#309;font-weight:bold">&#34;script&#34;</span>:{<span style="color:#309;font-weight:bold">&#34;source&#34;</span>:<span style="color:#c30">&#34;doc[&#39;time&#39;].value * 1000&#34;</span>,<span style="color:#309;font-weight:bold">&#34;lang&#34;</span>:<span style="color:#c30">&#34;painless&#34;</span>},
+            <span style="color:#309;font-weight:bold">&#34;min_doc_count&#34;</span>:<span style="color:#f60">0</span>
+        },
+        <span style="color:#309;font-weight:bold">&#34;aggs&#34;</span>:{
+            <span style="color:#309;font-weight:bold">&#34;distinct&#34;</span>:{
+                <span style="color:#309;font-weight:bold">&#34;cardinality&#34;</span>:{
+                    <span style="color:#309;font-weight:bold">&#34;field&#34;</span>:<span style="color:#c30">&#34;author&#34;</span>,
+                    <span style="color:#309;font-weight:bold">&#34;precision_threshold&#34;</span>:<span style="color:#f60">40000</span>
+                }
+            }
+        }
+    }
+  }
+}
+</code></pre></div>
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2018/01/02/kibana%E5%AF%B9%E7%B4%A2%E5%BC%95%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/">kibana对索引相关操作&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2019/02/03/%E5%9C%A8mac%E4%B8%8A%E6%89%93%E5%8C%85/">&larr;在mac上打包</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>centOS安装docker以及进阶 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.320430768%20%2b0000%20UTC%20m%3d%2b0.040176647">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>centOS安装docker以及进阶</h1>
+  <time datetime=2017-12-02T23:40:58Z class="post-date">2017-12-02 Sat</time>
+  <h3 id="安装-docker">安装 docker</h3>
+<p>yum install -y yum-utils<br>
+yum-config-manager &ndash;add-repo <a href="https://download.docker.com/linux/centos/docker-ce.repo">https://download.docker.com/linux/centos/docker-ce.repo</a>
+yum install docker-ce</p>
+<ul>
+<li>启动 docker</li>
+</ul>
+<p>service docker start</p>
+<ul>
+<li>设置 docker 开机启动</li>
+</ul>
+<p>systemctl enable docker</p>
+<h4 id="docker-迁移目录">docker 迁移目录</h4>
+<ol>
+<li>停止 docker 服务<br>
+systemctl stop docker</li>
+<li>编辑 dameon.json<br>
+vi /etc/docker/daemon.json</li>
+<li>增加如下内容（/home 是空间足够）</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#309;font-weight:bold">&#34;graph&#34;</span>: <span style="color:#c30">&#34;/home/docker&#34;</span>
+}
+</code></pre></div><ol start="4">
+<li>移动 docker 默认目录到目标目录<br>
+mv /var/lib/docker/* /home/docker/</li>
+<li>重新加载<br>
+systemctl daemon-reload</li>
+<li>启动 docker 服务<br>
+systemctl start docker</li>
+<li>查看 docker info，看目录是否修改成功<br>
+docker info</li>
+</ol>
+<h4 id="docker-迁移目录-1">docker 迁移目录</h4>
+<ol>
+<li>停止 docker 服务<br>
+systemctl stop docker</li>
+<li>编辑 dameon.json<br>
+vi /etc/docker/daemon.json</li>
+<li>增加如下内容（/home 是空间足够）</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#309;font-weight:bold">&#34;graph&#34;</span>: <span style="color:#c30">&#34;/home/docker&#34;</span>
+}
+</code></pre></div><ol start="4">
+<li>移动 docker 默认目录到目标目录<br>
+mv /var/lib/docker/* /home/docker/</li>
+<li>重新加载<br>
+systemctl daemon-reload</li>
+<li>启动 docker 服务<br>
+systemctl start docker</li>
+<li>查看 docker info，看目录是否修改成功<br>
+docker info</li>
+</ol>
+<h4 id="修改现有容器的目录映射或端口">修改现有容器的目录映射或端口</h4>
+<ol>
+<li>停止 docker 服务<br>
+systemctl stop docker</li>
+<li>查看 docker 目录<br>
+df -lh</li>
+<li>进入容器目录<br>
+cd /disk01/docker/containers/容器 id&hellip;..</li>
+<li>修改以下 2 个配置文件<br>
+vi hostconfig.json<br>
+vi config.v2.json</li>
+<li>启动 docker 服务<br>
+systemctl start docker</li>
+<li>启动容器，看端口映射和目录是否修改成功
+docker start 容器 id</li>
+</ol>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2017/09/09/nginx%E5%92%8Cdocker%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">nginx和docker负载均衡&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2018/01/02/kibana%E5%AF%B9%E7%B4%A2%E5%BC%95%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/">&larr;kibana对索引相关操作</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>github pages和hexo 搭建博客 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.325208085%20%2b0000%20UTC%20m%3d%2b0.044953964">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>github pages和hexo 搭建博客</h1>
+  <time datetime=2016-04-26T11:48:44Z class="post-date">2016-04-26 Tue</time>
+  <h2 id="新建github-pages">新建github pages</h2>
+<p>1.注册github账号</p>
+<p>2.verify邮箱，不然访问github page 404</p>
+<p>3.新建项目 名称 用户名.github.io
+4.在master新建index.html 输入内容 访问 用户名.github.io</p>
+<!-- raw HTML omitted -->
+<h2 id="安装hexo">安装hexo</h2>
+<p>1.安装nodejs  访问nodejs.org下载对应版本
+2.安装git    访问git-scm.com/download下载（ 建议使用迅雷等下载工具）
+3.进入nodejs安装目录新建一个文件夹，例如：hexo
+4.win+r 输入cmd或者运行nodejs  command
+5cd hexo 目录
+npm install -g hexo
+npm install hexo-server
+hexo init
+hexo generate/hexo g
+hexo server/hexo s
+浏览器访问localhost:4000</p>
+<h2 id="git上传代码部署">git上传代码部署</h2>
+<p>运行git bash</p>
+<p>cd hexo目录
+git clone <a href="https://github.com/">https://github.com/</a>用户名/用户名.github.io.git</p>
+<p>把hexo的public目录文件复制到用户名.github.io文件夹
+git config &ndash;global user.name &ldquo;github用户名&rdquo;
+git config &ndash;global user.email &ldquo;github邮箱&rdquo;
+git add .
+git commit -m &ldquo;first&rdquo;
+git remote add origin <a href="https://github.com/">https://github.com/</a>用户名/用户名.github.io.git
+git push origin master</p>
+<h2 id="绑定域名">绑定域名</h2>
+<p>百度云注册一个账号，登录后注册一个域名</p>
+<p>控制台-》产品服务-》域名服务-》域名管理 -》点击注册的域名右边的解析-》添加解析-&gt;记录类型选择 CNAME -&gt;记录值:用户名.github.io</p>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2016/04/22/node%E7%9B%B8%E5%85%B3/">node相关&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2016/07/10/siege%E5%B9%B6%E5%8F%91/">&larr;siege并发</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

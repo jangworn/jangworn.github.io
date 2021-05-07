@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>git修改已commit的name和email &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.326217589%20%2b0000%20UTC%20m%3d%2b0.045963468">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>git修改已commit的name和email</h1>
+  <time datetime=2020-06-03T23:40:58Z class="post-date">2020-06-03 Wed</time>
+  <ol>
+<li>拉取要修改的仓库<br>
+git clone https://xxx/xxxx.git</li>
+<li>进入本地目录<br>
+cd xxxx</li>
+</ol>
+<ol start="3">
+<li>拉取远程所有分支<br>
+git branch -r | grep -v &lsquo;-&gt;&rsquo; | while read remote; do git branch &ndash;track &ldquo;${remote#origin/}&rdquo; &ldquo;$remote&rdquo;; done<br>
+git fetch &ndash;all<br>
+git pull &ndash;all</li>
+</ol>
+<ol start="4">
+<li>执行修改命令</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git filter-branch --env-filter &#39;
+
+OLD_EMAIL=&#34;xxx@163.com&#34;
+OLD_NAME=&#34;xxx@163.com&#34;
+CORRECT_NAME=&#34;bbbbb&#34;
+CORRECT_EMAIL=&#34;bbbbb@qq.com&#34;
+
+if [ &#34;$GIT_COMMITTER_EMAIL&#34; = &#34;$OLD_EMAIL&#34; ]
+then
+    export GIT_COMMITTER_NAME=&#34;$CORRECT_NAME&#34;
+    export GIT_COMMITTER_EMAIL=&#34;$CORRECT_EMAIL&#34;
+fi
+if [ &#34;$GIT_AUTHOR_EMAIL&#34; = &#34;$OLD_EMAIL&#34; ]
+then
+    export GIT_AUTHOR_NAME=&#34;$CORRECT_NAME&#34;
+    export GIT_AUTHOR_EMAIL=&#34;$CORRECT_EMAIL&#34;
+fi
+if [ &#34;$GIT_AUTHOR_NAME&#34; = &#34;$OLD_NAME&#34; ]
+then
+    export GIT_AUTHOR_NAME=&#34;$CORRECT_NAME&#34;
+    export GIT_AUTHOR_EMAIL=&#34;$CORRECT_EMAIL&#34;
+fi
+&#39; --tag-name-filter cat -- --branches --tags
+</code></pre></div><ol start="5">
+<li>把修改 commit 信息提交<br>
+git push &ndash;force &ndash;tags origin &lsquo;refs/heads/*&rsquo;</li>
+</ol>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2020/01/10/%E4%BD%BF%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91serverless-framework%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/">使用腾讯云Serverless Framework搭建静态网站&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2020/09/15/%E5%9F%BA%E4%BA%8Ehexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E8%BF%81%E7%A7%BB%E5%88%B0hugo%E5%B9%B6%E5%AE%9A%E5%88%B6theme/">&larr;基于Hexo的个人博客静态网站迁移到Hugo并定制theme</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

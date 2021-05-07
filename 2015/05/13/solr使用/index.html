@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>solr使用 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.345444859%20%2b0000%20UTC%20m%3d%2b0.065190638">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>solr使用</h1>
+  <time datetime=2015-05-13T11:48:44Z class="post-date">2015-05-13 Wed</time>
+  <p>下载：wget <a href="http://apache.fayea.com/lucene/solr/5.1.0/solr-5.1.0.zip">http://apache.fayea.com/lucene/solr/5.1.0/solr-5.1.0.zip</a></p>
+<p>unzip -q solr-5.1.0.zip</p>
+<p>cd solr-5.0.0.zip</p>
+<p>启动solr: bin/solr start -p 8983</p>
+<p>新建core name为：new_core</p>
+<p>复制/var/www/solr-5.1.0/server/solr/configsets/basic_configs/ 目录下的conf和lang 到/var/www/solr-5.1.0/server/solr/new_core</p>
+<p>打开浏览器localhost:8983 新建core</p>
+<p>demo</p>
+<p>修改conf/schema.xml 在fields下添加</p>
+<pre><code>  &lt;field name=&quot;song_id&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;true&quot; /&gt;
+&lt;field name=&quot;song_name&quot; type=&quot;text_general&quot; indexed=&quot;true&quot; stored=&quot;true&quot; omitNorms=&quot;true&quot; termVectors=&quot;true&quot; /&gt;
+&lt;field name=&quot;space_song_name&quot; type=&quot;text_general&quot; indexed=&quot;true&quot; stored=&quot;true&quot; omitNorms=&quot;true&quot; termVectors=&quot;true&quot; /&gt;
+ &lt;field name=&quot;hot_num&quot; type=&quot;long&quot; indexed=&quot;true&quot; stored=&quot;true&quot; omitNorms=&quot;true&quot; termVectors=&quot;true&quot; /&gt;
+把&lt;uniqueKey&gt;id&lt;/uniqueKey&gt;
+改成
+&lt;uniqueKey&gt;song_id&lt;/uniqueKey&gt;
+&lt;defaultSearchField&gt;song_name&lt;/defaultSearchField&gt;
+</code></pre>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2015/05/05/js%E6%AD%A3%E5%88%99%E8%BF%87%E6%BB%A4/">js正则过滤&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2015/05/29/linux%E5%AD%A6%E4%B9%A0%E5%91%BD%E4%BB%A41/">&larr;linux学习命令1</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posts &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.37340796%20%2b0000%20UTC%20m%3d%2b0.093153839">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <link href="https://www.johnyn.com/post/index.xml" rel="alternate" type="application/rss+xml" title="后会有期" />
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    
+
+<article class="post">
+<h1 class="post-title">
+  <a href="https://www.johnyn.com/2014/07/11/preg_metch%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6%E9%97%AE%E9%A2%98/">preg_metch字符串长度问题</a>
+</h1>
+<time datetime="2014-07-11T14:56:44Z" class="post-date">2014-07-11 Fri</time>
+<p>今天抓一个网页匹配内容出问题，仔细检查规则并无问题，删掉要匹配的内容一大半就可以，后来一搜索是 backtrack_limit的问题，在代码前</p>
+
+<div class="read-more-link">
+  <a href="/2014/07/11/preg_metch%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6%E9%97%AE%E9%A2%98/">阅读全文</a>
+</div>
+
+<ul class="tag">
+  
+</ul>
+</article>
+
+<article class="post">
+<h1 class="post-title">
+  <a href="https://www.johnyn.com/2014/07/11/markdown%E8%AF%AD%E6%B3%95/">markdown语法</a>
+</h1>
+<time datetime="2014-07-11T14:56:44Z" class="post-date">2014-07-11 Fri</time>
+<p>快速入门 用 Markdown 语法写作是很容易的。在编辑界面的左侧就是你写作的地方。在你认为需要的时候，可以使用以下这些语法来格式化你的内容。例如下面这个无序</p>
+
+<div class="read-more-link">
+  <a href="/2014/07/11/markdown%E8%AF%AD%E6%B3%95/">阅读全文</a>
+</div>
+
+<ul class="tag">
+  
+      <li><a href="https://www.johnyn.com/tags/markdown-%E8%AF%AD%E6%B3%95/">markdown 语法</a></li>
+ 
+</ul>
+</article>
+
+<article class="post">
+<h1 class="post-title">
+  <a href="https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bexecute%E6%96%B9%E6%B3%95bug/">thinkphp的pgsql模型execute方法bug</a>
+</h1>
+<time datetime="2014-06-23T14:56:44Z" class="post-date">2014-06-23 Mon</time>
+<p>ThinkPHP/Library/Think/Db/Driver 目录下的Pgsql.class.php 的102行 代码如下： &lt;?php public function execute($str) { $this-&gt;initConnect(true); if ( !$this-&gt;_linkID ) return false; $this-&gt;queryStr = $str; //释放前次的查询结果 if ( $this-&gt;queryID ) $this-&gt;free(); N(&#39;db_write&#39;,1); // 记录开始执行时</p>
+
+<div class="read-more-link">
+  <a href="/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bexecute%E6%96%B9%E6%B3%95bug/">阅读全文</a>
+</div>
+
+<ul class="tag">
+  
+      <li><a href="https://www.johnyn.com/tags/thinkphp/">thinkphp</a></li>
+ 
+      <li><a href="https://www.johnyn.com/tags/pgsql/">pgsql</a></li>
+ 
+      <li><a href="https://www.johnyn.com/tags/execute/">execute</a></li>
+ 
+</ul>
+</article>
+
+<article class="post">
+<h1 class="post-title">
+  <a href="https://www.johnyn.com/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bgetlastinsid%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E6%8F%92%E5%85%A5%E7%9A%84id%E7%9A%84bug/">thinkphp的pgsql模型getLastInsId()获取上次插入的id的bug</a>
+</h1>
+<time datetime="2014-06-23T14:48:44Z" class="post-date">2014-06-23 Mon</time>
+<p>hinkPHP/Library/Think/Db/Driver 目录下的Pgsql.class.php 的123行 代码如下 &lt;?php /** * 用于获取最后插入的ID * @access public * @return integer */ public function last_insert_id() { $query = &#34;SELECT LASTVAL() AS insert_id&#34;; $result = pg_query($this-&amp;gt;_linkID,$query); $arr = pg_fetch_array($result,null,PGSQL_ASSOC); //list($last_insert_id) = pg_fetch_array($result,null,PGSQL_ASSOC); pg_free_result($result);</p>
+
+<div class="read-more-link">
+  <a href="/2014/06/23/thinkphp%E7%9A%84pgsql%E6%A8%A1%E5%9E%8Bgetlastinsid%E8%8E%B7%E5%8F%96%E4%B8%8A%E6%AC%A1%E6%8F%92%E5%85%A5%E7%9A%84id%E7%9A%84bug/">阅读全文</a>
+</div>
+
+<ul class="tag">
+  
+      <li><a href="https://www.johnyn.com/tags/thinkphp/">thinkphp</a></li>
+ 
+      <li><a href="https://www.johnyn.com/tags/pgsql/">pgsql</a></li>
+ 
+      <li><a href="https://www.johnyn.com/tags/getlastinsid/">getlastinsid</a></li>
+ 
+</ul>
+</article>
+
+<article class="post">
+<h1 class="post-title">
+  <a href="https://www.johnyn.com/2014/06/21/win7-64%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85jdk%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">WIN7 64位系统安装JDK并配置环境变量</a>
+</h1>
+<time datetime="2014-06-21T11:48:44Z" class="post-date">2014-06-21 Sat</time>
+<p>首先，下载JDK安装包，到官网http://www.oracle.com/technetwork/java/javase/downloads</p>
+
+<div class="read-more-link">
+  <a href="/2014/06/21/win7-64%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85jdk%E5%B9%B6%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">阅读全文</a>
+</div>
+
+<ul class="tag">
+  
+      <li><a href="https://www.johnyn.com/tags/win7-jdk/">win7 JDK</a></li>
+ 
+</ul>
+</article>
+
+<article class="post">
+<h1 class="post-title">
+  <a href="https://www.johnyn.com/2014/06/20/vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%91%BD%E4%BB%A4%E5%9B%BE%E8%A7%A3/">vim快捷键命令图解</a>
+</h1>
+<time datetime="2014-06-20T16:16:05Z" class="post-date">2014-06-20 Fri</time>
+<p></p>
+
+<ul class="tag">
+  
+      <li><a href="https://www.johnyn.com/tags/linux-vim/">linux vim</a></li>
+ 
+</ul>
+</article>
+
+<article class="post">
+<h1 class="post-title">
+  <a href="https://www.johnyn.com/2014/05/16/%E5%88%9D%E6%8E%A5%E8%A7%A6mongodb/">初接触mongodb</a>
+</h1>
+<time datetime="2014-05-16T11:48:44Z" class="post-date">2014-05-16 Fri</time>
+<p>最近用到mongodb，以往习惯的把接收到的参数intval，谁知mongodb要查询的该字段是string，悲剧了……</p>
+
+<ul class="tag">
+  
+      <li><a href="https://www.johnyn.com/tags/mongodb/">mongodb</a></li>
+ 
+</ul>
+</article>
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<nav class="pagination">
+	
+	    <a class="newer-posts" href="/post/page/5/">&larr; 上一页</a>
+	
+	<span class="page-number">Page 6 of 6</span>
+	
+</nav>
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

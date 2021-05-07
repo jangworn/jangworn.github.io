@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nginx的pathinfo &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.342804549%20%2b0000%20UTC%20m%3d%2b0.062550428">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>nginx的pathinfo</h1>
+  <time datetime=2017-05-16T11:48:44Z class="post-date">2017-05-16 Tue</time>
+  <p>nginx -t 查看nginx启动失败原因
+unknown directive “if(!-e”   if和(直接有空格</p>
+<blockquote>
+<p>匹配nginx需要交给php-fpm执行的URI，先要允许pathinfo格式的URL能够被匹配到
+所以要去掉$
+nginx文档中的匹配规则为：^(.+.php)(.*)$
+还有~ .php这种写法 和 ~ .php($|/)这种写法
+都是差不多意思没啥严格区别
+唯一区别就是有多个匹配php的location的话需要留意权重差异</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">location ~ ^(.+\.php)(.*)$ {
+    root              /var/www/www.jjonline.cn/wwwRoot;
+    fastcgi_pass   127.0.0.1:9000;
+    fastcgi_index  index.php;
+    ##增加 fastcgi_split_path_info指令，将URI匹配成PHP脚本的URI和pathinfo两个变量
+    ##即$fastcgi_script_name 和$fastcgi_path_info
+    fastcgi_split_path_info  ^(.+\.php)(.*)$;
+    ##PHP中要能读取到pathinfo这个变量
+    ##就要通过fastcgi_param指令将fastcgi_split_path_info指令匹配到的pathinfo部分赋值给PATH_INFO
+    ##这样PHP中$_SERVER[&#39;PATH_INFO&#39;]才会存在值
+    fastcgi_param PATH_INFO $fastcgi_path_info;
+    ##在将这个请求的URI匹配完毕后，检查这个绝对地址的PHP脚本文件是否存在
+    ##如果这个PHP脚本文件不存在就不用交给php-fpm来执行了
+    ##否者页面将出现由php-fpm返回的:`File not found.`的提示
+    if (!-e $document_root$fastcgi_script_name) {
+        ##此处直接返回404错误
+        ##你也可以rewrite 到新地址去，然后break;
+        return 404;
+    }
+    fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    include        fastcgi_params;
+}
+</code></pre></div>
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2017/03/02/centos%E5%92%8Cwindows-server2003%E6%90%AD%E5%BB%BAapache-php-ssdb%E7%8E%AF%E5%A2%83/">Centos和windows server2003搭建apache php ssdb环境&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2017/05/29/linux%E5%AD%A6%E4%B9%A0%E5%91%BD%E4%BB%A42/">&larr;linux学习命令2</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

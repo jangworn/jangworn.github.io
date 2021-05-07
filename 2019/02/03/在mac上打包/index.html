@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在mac上打包 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.339552137%20%2b0000%20UTC%20m%3d%2b0.059297916">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>在mac上打包</h1>
+  <time datetime=2019-02-03T23:40:58Z class="post-date">2019-02-03 Sun</time>
+  <h3 id="在-mac-打包在-linux-运行">在 mac 打包，在 linux 运行</h3>
+<p>CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go</p>
+<h4 id="golang-支持在一个平台下生成另一个平台可执行程序的交叉编译功能">Golang 支持在一个平台下生成另一个平台可执行程序的交叉编译功能。</h4>
+<ul>
+<li>
+<p>Mac 下编译 Linux 平台的 64 位可执行程序：<br>
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build test.go</p>
+</li>
+<li>
+<p>打包并指定输出二进制文件名<br>
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o run_some_script main.go</p>
+</li>
+</ul>
+<ul>
+<li>Mac 下编译 Windows 平台的 64 位可执行程序<br>
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build test.go</li>
+</ul>
+<h4 id="linux-下编译-mac-windows-平台的-64-位可执行程序">Linux 下编译 Mac, Windows 平台的 64 位可执行程序：</h4>
+<p>CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build test.go</p>
+<p>CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build test.go</p>
+<h4 id="windows-下编译-mac-linux-平台的-64-位可执行程序">Windows 下编译 Mac, Linux 平台的 64 位可执行程序：</h4>
+<p>SET CGO_ENABLED=0SET GOOS=darwin3 SET GOARCH=amd64 go build test.go</p>
+<p>SET CGO_ENABLED=0 SET GOOS=linux SET GOARCH=amd64 go build test.go</p>
+<blockquote>
+<p>注：如果编译 web 等工程项目，直接 cd 到工程目录下直接执行以上命令</p>
+</blockquote>
+<blockquote>
+<p>GOOS：目标可执行程序运行操作系统，支持 darwin，freebsd，linux，windows</p>
+</blockquote>
+<blockquote>
+<p>GOARCH：目标可执行程序操作系统构架，包括 386，amd64，arm</p>
+</blockquote>
+<blockquote>
+<p>Golang version 1.5 以前版本在首次交叉编译时还需要配置交叉编译环境：
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 ./make.bash
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 ./make.bash</p>
+</blockquote>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2018/01/02/elasticsearch%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/">Elasticsearch查询语句&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2019/06/20/4%E7%A7%8D%E9%9F%B3%E9%A2%91%E6%A0%BC%E5%BC%8F%E8%BD%AC%E5%8D%95%E5%A3%B0%E9%81%93wav.md/">&larr;4种音频格式转单声道wav.md</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

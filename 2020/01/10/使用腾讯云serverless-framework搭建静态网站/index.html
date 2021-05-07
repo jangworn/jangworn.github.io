@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用腾讯云Serverless Framework搭建静态网站 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.349550574%20%2b0000%20UTC%20m%3d%2b0.069296453">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>使用腾讯云Serverless Framework搭建静态网站</h1>
+  <time datetime=2020-01-10T16:16:05Z class="post-date">2020-01-10 Fri</time>
+  <ol>
+<li>
+<p>访问https://serverless.cloud.tencent.com/</p>
+</li>
+<li>
+<p>点击快速部署组件的按钮 website,创建一个应用，复制该应用的 bucketName，比如： sls-cloudfunction-website-动态变化的值-code</p>
+</li>
+<li>
+<p>安装 serverless<br>
+npm i -g serverless 或 curl -o- -L <a href="https://slss.io/install">https://slss.io/install</a> | bash</p>
+</li>
+<li>
+<p>创建静态网站<br>
+mkdir website &amp;&amp; vi website/index.html,增加内容 helloworld</p>
+</li>
+<li>
+<p>增加 serverless 配置文件<br>
+vi serverless.yml</p>
+</li>
+</ol>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">website:
+  component: &#34;@serverless/tencent-website&#34;
+  inputs:
+    code:
+      src: website
+      index: index.html
+      error: 404.html
+    region: ap-guangzhou
+    bucketName: sls-cloudfunction-website-动态变化的值-code
+</code></pre></div><ol start="6">
+<li>
+<p>执行 sls &ndash;debug ,可以看到运行情况，看到二维码就用微信扫码验证</p>
+</li>
+<li>
+<p>在我的应用里访问部署的 website 服务</p>
+</li>
+</ol>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2020/01/03/%E5%BC%80%E5%90%AFgomod%E9%85%8D%E7%BD%AEgoproxy/">开启gomod,配置goproxy&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2020/06/03/git%E4%BF%AE%E6%94%B9%E5%B7%B2commit%E7%9A%84name%E5%92%8Cemail/">&larr;git修改已commit的name和email</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

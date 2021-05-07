@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kibana对索引相关操作 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.336992228%20%2b0000%20UTC%20m%3d%2b0.056738007">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>kibana对索引相关操作</h1>
+  <time datetime=2018-01-02T23:40:58Z class="post-date">2018-01-02 Tue</time>
+  <h4 id="查看所有索引">查看所有索引</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">GET</span> <span style="color:#a00;background-color:#faa">_cat/indices</span>
+</code></pre></div><h4 id="创建索引-article">创建索引 article</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">POST</span> <span style="color:#a00;background-color:#faa">article/article/_mapping</span>
+{
+  <span style="color:#309;font-weight:bold">&#34;article&#34;</span>: {
+    <span style="color:#309;font-weight:bold">&#34;properties&#34;</span>: {
+      <span style="color:#309;font-weight:bold">&#34;content&#34;</span>: {
+        <span style="color:#309;font-weight:bold">&#34;type&#34;</span>: <span style="color:#c30">&#34;text&#34;</span>,
+        <span style="color:#309;font-weight:bold">&#34;analyzer&#34;</span>: <span style="color:#c30">&#34;ngram_analyzer&#34;</span>
+      },
+      <span style="color:#309;font-weight:bold">&#34;title&#34;</span>: {
+        <span style="color:#309;font-weight:bold">&#34;type&#34;</span>: <span style="color:#c30">&#34;text&#34;</span>,
+        <span style="color:#309;font-weight:bold">&#34;analyzer&#34;</span>: <span style="color:#c30">&#34;ngram_analyzer&#34;</span>
+      },
+      <span style="color:#309;font-weight:bold">&#34;time&#34;</span>: {
+        <span style="color:#309;font-weight:bold">&#34;type&#34;</span>: <span style="color:#c30">&#34;date&#34;</span>
+      },
+      <span style="color:#309;font-weight:bold">&#34;author&#34;</span>: {
+        <span style="color:#309;font-weight:bold">&#34;type&#34;</span>: <span style="color:#c30">&#34;text&#34;</span>
+      },
+
+    }
+  }
+}
+</code></pre></div><h4 id="查看-article-的-mapping">查看 article 的 mapping</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">GET</span> <span style="color:#a00;background-color:#faa">article/article/_mapping</span>
+</code></pre></div><h4 id="删除索引-article-数据">删除索引 article 数据</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">POST</span> <span style="color:#a00;background-color:#faa">article/article/_delete_by_query</span>
+{
+  <span style="color:#309;font-weight:bold">&#34;query&#34;</span>: {
+    <span style="color:#309;font-weight:bold">&#34;match_all&#34;</span>: {}
+  }
+}
+</code></pre></div><h4 id="删除索引-article">删除索引 article</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">DELETE</span> <span style="color:#a00;background-color:#faa">article</span>
+</code></pre></div><h4 id="复制索引-article-到-article_new">复制索引 article 到 article_new</h4>
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#a00;background-color:#faa">POST</span> <span style="color:#a00;background-color:#faa">_reindex</span>
+{
+  <span style="color:#309;font-weight:bold">&#34;conflicts&#34;</span>: <span style="color:#c30">&#34;proceed&#34;</span>,
+  <span style="color:#309;font-weight:bold">&#34;source&#34;</span>: {
+    <span style="color:#309;font-weight:bold">&#34;index&#34;</span>: <span style="color:#c30">&#34;article&#34;</span>,
+    <span style="color:#309;font-weight:bold">&#34;sort&#34;</span>: {
+      <span style="color:#309;font-weight:bold">&#34;time&#34;</span>: <span style="color:#c30">&#34;desc&#34;</span>
+    }
+  },
+  <span style="color:#309;font-weight:bold">&#34;dest&#34;</span>: {
+    <span style="color:#309;font-weight:bold">&#34;index&#34;</span>: <span style="color:#c30">&#34;article_new&#34;</span>,
+    <span style="color:#309;font-weight:bold">&#34;op_type&#34;</span>: <span style="color:#c30">&#34;create&#34;</span>
+  }
+}
+</code></pre></div>
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2017/12/02/centos%E5%AE%89%E8%A3%85docker%E4%BB%A5%E5%8F%8A%E8%BF%9B%E9%98%B6/">centOS安装docker以及进阶&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2018/01/02/elasticsearch%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5/">&larr;Elasticsearch查询语句</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.372656258%20%2b0000%20UTC%20m%3d%2b0.092402137">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <link href="https://www.johnyn.com/index.xml" rel="alternate" type="application/rss+xml" title="后会有期" />
+  <link href="https://www.johnyn.com/index.json" rel="alternate" type="application/json" title="后会有期" />
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="posts">
+  
+  
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/07/15/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAnginx-php-mysql/">快速搭建nginx&#43;php&#43;mysql</a>
+  </h1>
+  <time datetime="2015-07-15T11:48:44Z" class="post-date">2015-07-15 Wed</time>
+  <p>apt-get install nginx php5-fpm vi /etc/nginx/sites-available/default 修改如下 listen 80; root /var/www/html; index index.html index.htm index.php; location ~ .php$ { include fastcgi.conf; fastcgi_pass unix:/run/php/php7.0-fpm.sock; fastcgi_index index.php; fastcgi_intercept_errors on; include fastcgi_params; } 保存 ps aux | grep -c php-fpm /etc/init.d/php-fpm restart service nginx restart vi /var/www/html/phpinfo.php echo phpinfo(); apt-get install mysql-server php5-mysql vi /etc/php5/fpm/php.ini 修改extension_di</p>
+  
+  <div class="read-more-link">
+    <a href="/2015/07/15/%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAnginx-php-mysql/">阅读全文</a>
+  </div>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/07/15/%E4%BF%AE%E6%94%B9linux%E9%BB%98%E8%AE%A4%E8%AF%AD%E8%A8%80/">修改linux默认语言</a>
+  </h1>
+  <time datetime="2015-07-15T11:48:44Z" class="post-date">2015-07-15 Wed</time>
+  <p>用vi(或nano等文本编辑器)打开 /etc/default/locale 文件 将原来的配置内容修改为 LANG=”en_US.UTF-8″ LANGUAGE=”en_US:en” 再</p>
+  
+  <div class="read-more-link">
+    <a href="/2015/07/15/%E4%BF%AE%E6%94%B9linux%E9%BB%98%E8%AE%A4%E8%AF%AD%E8%A8%80/">阅读全文</a>
+  </div>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/06/03/mysql-postgresql-mongodb%E8%BF%9E%E6%8E%A5%E6%93%8D%E4%BD%9C/">mysql postgresql mongodb连接操作</a>
+  </h1>
+  <time datetime="2015-06-03T11:48:44Z" class="post-date">2015-06-03 Wed</time>
+  <p>&lt;?php header(&#39;Content-type:text/html;charset=utf-8&#39;); $conn = mysql_connect(&#39;localhost&#39;,&#39;root&#39;,&#39;111111&#39;); if(!$conn){ die(&#39;&#39;); } mysql_select_db(&#39;imsl_media&#39;,$conn); mysql_query(&#39;set names utf8&#39;); $res = mysql_query(&#39;select * from imsl_singer limit 10&#39;); while($row = mysql_fetch_assoc($res)){ var_dump($row); } //mongo $mongo = new mongo(&#34;mongodb://root:111111@localhost:27017&#34;); $db = $mongo-&gt;user; $table = $db-&gt;user_list; $sort[&#39;time&#39;] = 1; $a = $table-&gt;find($where)-&gt;sort($sort)-&gt;limit(10)-&gt;skip(10); //postgresql $pg = pg_connect(&#39;host=localhost port=5443 dbname=imsl_media user=root password=bar&#39;); $res = pg_query($pg,&#39;select * from imsl_singer limit 10&#39;); if(!$res){ die(&#39;&#39;); } if(pg_num_rows($res)){ while($row = pg_fetch_assoc($res)){ var_dump($row); } }else{ }</p>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/06/02/memcached%E5%AE%89%E8%A3%85/">memcached安装</a>
+  </h1>
+  <time datetime="2015-06-02T11:48:44Z" class="post-date">2015-06-02 Tue</time>
+  <p>在内存使用效率上，如果使用简单的key-value存储，Memcached的内存利用率更高。而如果Redis采用hash结构来做key-va</p>
+  
+  <div class="read-more-link">
+    <a href="/2015/06/02/memcached%E5%AE%89%E8%A3%85/">阅读全文</a>
+  </div>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/05/29/linux%E5%AD%A6%E4%B9%A0%E5%91%BD%E4%BB%A41/">linux学习命令1</a>
+  </h1>
+  <time datetime="2015-05-29T11:48:44Z" class="post-date">2015-05-29 Fri</time>
+  <p>在某个文件中查找某一段内容 grep -F php 01.php 在某个目录和子目录查找字符串出现的次数 grep -r &lsquo;print&rsquo; /var/www 查看进程 ps -ef cd命令 切换用户目录 例如 /root 倒引号里的会当做she</p>
+  
+  <div class="read-more-link">
+    <a href="/2015/05/29/linux%E5%AD%A6%E4%B9%A0%E5%91%BD%E4%BB%A41/">阅读全文</a>
+  </div>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/05/13/solr%E4%BD%BF%E7%94%A8/">solr使用</a>
+  </h1>
+  <time datetime="2015-05-13T11:48:44Z" class="post-date">2015-05-13 Wed</time>
+  <p>下载：wget http://apache.fayea.com/lucene/solr/5.1.0/solr-5.1.0.zip unzip -q solr-5.1.0.zip cd solr-5.0.0.zip 启动solr: bin/solr start -p 8983 新建core name为：new_core 复制/var/www/solr-5.1.0/serv</p>
+  
+  <div class="read-more-link">
+    <a href="/2015/05/13/solr%E4%BD%BF%E7%94%A8/">阅读全文</a>
+  </div>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/05/05/js%E6%AD%A3%E5%88%99%E8%BF%87%E6%BB%A4/">js正则过滤</a>
+  </h1>
+  <time datetime="2015-05-05T11:48:44Z" class="post-date">2015-05-05 Tue</time>
+  <p>var reg = /\/|\~|\!|\@|\\$|\%|\^|\&amp;|\*|\(|\)|\_|\+|\{|\}|\:|\&lt;|\&gt;|\</p>
+  
+  <div class="read-more-link">
+    <a href="/2015/05/05/js%E6%AD%A3%E5%88%99%E8%BF%87%E6%BB%A4/">阅读全文</a>
+  </div>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/04/22/unserialize%E8%BF%94%E5%9B%9Efalse/">unserialize返回false</a>
+  </h1>
+  <time datetime="2015-04-22T11:48:44Z" class="post-date">2015-04-22 Wed</time>
+  <p>&lt;?php function mb_unserialize($serial_str) { $serial_str= preg_replace(‘!s:(\d+):”(.*?)”;!se’, “‘s:’.strlen(‘$2′).&#39;:\”$2</p>
+  
+  <div class="read-more-link">
+    <a href="/2015/04/22/unserialize%E8%BF%94%E5%9B%9Efalse/">阅读全文</a>
+  </div>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/04/22/unbutu%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C/">unbutu定时执行</a>
+  </h1>
+  <time datetime="2015-04-22T11:48:44Z" class="post-date">2015-04-22 Wed</time>
+  <p>例子： 每分钟执行10.php 并把输出结果输出到showtime.log crontab -e */1 * * * * php /var/www/html/10.php &raquo; /var/www/html/showtime.log</p>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://www.johnyn.com/2015/03/03/%E9%A2%84%E9%98%B2%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%BB%E5%87%BB%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/">预防数据库攻击的正确做法</a>
+  </h1>
+  <time datetime="2015-03-03T11:48:44Z" class="post-date">2015-03-03 Tue</time>
+  <p>function check_input($value) { // 去除斜杠 if (get_magic_quotes_gpc()) { $value = stripslashes($value); } // 如果不是数字则加引号 if (!is_numeric($value)) { $value = &quot;'&quot; . mysql_real_escape_string($value) . &quot;'&quot;; } return $value; } $con = mysql_connect(&quot;localhost&quot;, &quot;hello&quot;, &quot;321&quot;); if (!$con) { die('Could not connect: ' . mysql_error()); } // 进行安全的 SQL $user = check_input($_POST['user']); $pwd = check_input($_POST['pwd']); $sql =</p>
+  
+  <div class="read-more-link">
+    <a href="/2015/03/03/%E9%A2%84%E9%98%B2%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%BB%E5%87%BB%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%81%9A%E6%B3%95/">阅读全文</a>
+  </div>
+  
+  <ul class="tag">
+    
+</ul>
+</article>
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<nav class="pagination">
+	
+	    <a class="newer-posts" href="/page/3/">&larr; 上一页</a>
+	
+	<span class="page-number">Page 4 of 6</span>
+	
+	    <a class="older-posts" href="/page/5/">下一页 &rarr;</a>
+	
+</nav>
+</div>
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

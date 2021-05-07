@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>unbutu 安装scws分词 &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.347693667%20%2b0000%20UTC%20m%3d%2b0.067439546">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>unbutu 安装scws分词</h1>
+  <time datetime=2014-08-07T11:48:44Z class="post-date">2014-08-07 Thu</time>
+  <pre><code>wget http://www.ftphp.com/scws/down/scws-1.1.3.tar.bz2   //源码包
+</code></pre>
+<p>　　wget <a href="http://www.ftphp.com/scws/down/scws-dict-chs-utf8.tar.bz2">http://www.ftphp.com/scws/down/scws-dict-chs-utf8.tar.bz2</a>  //utf8词典，</p>
+<p>　　wget <a href="http://www.ftphp.com/scws/down/scws-dict-chs-gbk.tar.bz2">http://www.ftphp.com/scws/down/scws-dict-chs-gbk.tar.bz2</a></p>
+<p>　　[root@localhost src]# tar xjvf scws-1.1.3.tar.bz2</p>
+<p>　　[root@localhost src]# cd scws-1.1.3</p>
+<p>　　编译scws：</p>
+<p>　　[root@localhost scws-1.1.3]# ./configure –prefix=/usr/local/scws</p>
+<p>　　[root@localhost scws-1.1.3]# make</p>
+<p>　　[root@localhost scws-1.1.3]# make install</p>
+<p>　　[root@localhost scws-1.1.3]# ls -al /usr/local/scws/lib/libscws.la  //看看有没有这个文件，如果有就说明安装成功了。</p>
+<p>　　[root@localhost scws-1.1.3]# /usr/local/scws/bin/scws -h  //这个也是看看安装成功了没有，如果看到下面输出，也说明安装成功。</p>
+<p>　　scws (scws-cli/1.1.3)</p>
+<p>　　Simple Chinese Word Segmentation – Command line usage.</p>
+<p>　　Copyright (C)2007 by hightman.</p>
+<p>　　安装中文分词的php扩展：</p>
+<p>　　安装此扩展要求您的 php 和系统环境安装了相应的 autoconf automake 工具及 phpize 。</p>
+<p>　　[root@localhost src]# tar xjvf scws-dict-chs-utf8.tar.bz2 -C /usr/local/scws/etc //把utf8词典安装到scws指定的目录下。</p>
+<p>　　1）.进入源码目录的 phpext/ 目录</p>
+<p>　　[root@localhostcd ~]# cd /usr/local/src/scws-1.1.3/phpext/</p>
+<p>　　2）.执行 phpize （在PHP安装目录的bin/目录下）</p>
+<p>　　[root@localhost phpext]# /usr/local/php/bin/phpize</p>
+<p>　　#Configuring for:</p>
+<p>　　#PHP Api Version:         20090626</p>
+<p>　　#Zend Module Api No:      20090626</p>
+<p>　　#Zend Extension Api No:   220090626</p>
+<p>　　3）.进行编译</p>
+<p>　　[root@localhost phpext]#</p>
+<pre><code> ./configure --with-scws=/usr/local/scws
+</code></pre>
+<p>　　[root@localhost phpext]# make</p>
+<p>　　[root@localhost phpext]# make install</p>
+<p>　　4）. 找到php.ini的位置，并修改和加入内容</p>
+<p>　　[root@localhost phpext]# vi /etc/php5/apache2/php.ini</p>
+<p>　　加上</p>
+<p>　　[scws]</p>
+<p>　　extension = scws.so</p>
+<p>　　scws.default.charset = utf8</p>
+<p>　　scws.default.fpath   = /usr/local/scws/etc</p>
+<p>　　[root@localhost phpext]#php -m  //执行 php -m 就能看到 scws 了或者在 phpinfo() 中 scws 的相关部分</p>
+<p>　　重启Apache</p>
+
+  <div class="permalink">
+    <a class="f-right" href="https://www.johnyn.com/2014/08/06/sphinx%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">sphinx的安装与使用&rarr;</a>
+    <a class="f-left" href="https://www.johnyn.com/2014/10/09/php-mongo%E6%89%A9%E5%B1%95%E4%BB%A5%E5%8F%8Arockmongo%E5%AE%89%E8%A3%85/">&larr;php-mongo扩展以及rockmongo安装</a>
+  </div>
+</div>
+
+
+
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>

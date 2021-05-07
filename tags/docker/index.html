@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-cn" lang="zh-cn" >
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.83.1" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>docker &middot; 后会有期</title>
+  <meta name="keywords" content="Web开发技术，web开发，数据库相关，PHP相关，golang相关，docker相关，git相关">
+  <meta name="description" content="基于Hugo,专注Web开发技术分享,包括数据可视化，前端、数据库、PHP、golang、Elasticsearch等" />
+  
+  <link type="text/css" rel="stylesheet" href="https://www.johnyn.com/css/style.css?v=2021-05-07%2008%3a15%3a16.379284882%20%2b0000%20UTC%20m%3d%2b0.099030761">
+  
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  <link href="https://www.johnyn.com/tags/docker/index.xml" rel="alternate" type="application/rss+xml" title="后会有期" />
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2398d79e477a3dc3d76badd88dc266eb";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+  <body class="theme-cyan ">
+  <aside class="sidebar">
+  <div id="fastSearch">
+    <input id="searchInput"  placeholder="输入关键词搜索" />
+    <ul id="searchResults">
+    </ul>
+  </div>
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://www.johnyn.com/"><h2>后会有期</h2></a>
+      <p class="lead">
+       青山不改，绿水长流 carpe diem 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://www.johnyn.com/">主页</a> </li>
+        <li class="link"><a target="_blank" href="https://github.com/jangworn/"> Github </a></li>
+      </ul>
+    </nav>
+    <div class="qrcode">
+      <img src="/img/qrcode.jpg" alt="">
+    </div>
+  
+
+  <script src="/js/fuse.min.js"></script> 
+  <script src="/js/search.js"></script>
+  
+
+   
+  </div>
+</aside>
+
+    <main class="content container">
+    
+
+<article class="post">
+<h1 class="post-title">
+  <a href="https://www.johnyn.com/2017/12/02/centos%E5%AE%89%E8%A3%85docker%E4%BB%A5%E5%8F%8A%E8%BF%9B%E9%98%B6/">centOS安装docker以及进阶</a>
+</h1>
+<time datetime="2017-12-02T23:40:58Z" class="post-date">2017-12-02 Sat</time>
+<p>安装 docker yum install -y yum-utils yum-config-manager &ndash;add-repo https://download.docker.com/linux/centos/docker-ce.repo yum install docker-ce 启动 docker service docker start 设置 docker 开机启动 systemctl enable docker docker 迁移目录 停止 docker 服务 systemctl stop docker 编辑 dameon.json vi /etc/docker/daemon.json 增加如下内容（/home 是空间足够） { &#34;graph&#34;: &#34;/home/docker&#34; } 移</p>
+
+<div class="read-more-link">
+  <a href="/2017/12/02/centos%E5%AE%89%E8%A3%85docker%E4%BB%A5%E5%8F%8A%E8%BF%9B%E9%98%B6/">阅读全文</a>
+</div>
+
+<ul class="tag">
+  
+      <li><a href="https://www.johnyn.com/tags/docker/">docker</a></li>
+ 
+</ul>
+</article>
+
+<article class="post">
+<h1 class="post-title">
+  <a href="https://www.johnyn.com/2017/09/02/docker%E5%85%A5%E9%97%A8/">docker入门</a>
+</h1>
+<time datetime="2017-09-02T23:40:58Z" class="post-date">2017-09-02 Sat</time>
+<p>系统 linuix-ubuntu 安装 docker apt install docker 创建 ubuntu 镜像 docker pull ubuntu 运行容器 docker run -p 80:80 -v /var/www:/var/www -d ubuntu 进入容器 docker exec -it ubuntu /bin/bash 查看镜像 docker images 导出容器 docker ps -a docker export d66 &gt; ubuntu.tar 导入容器 cat ubuntu.tar | docker import - ubuntu:latest docker run -d</p>
+
+<div class="read-more-link">
+  <a href="/2017/09/02/docker%E5%85%A5%E9%97%A8/">阅读全文</a>
+</div>
+
+<ul class="tag">
+  
+      <li><a href="https://www.johnyn.com/tags/docker/">docker</a></li>
+ 
+</ul>
+</article>
+
+
+
+
+  
+  
+  
+  
+<nav class="pagination">
+	
+	<span class="page-number">Page 1 of 1</span>
+	
+</nav>
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2021. All rights reserved. <a href="https://gohugo.io/" target="_blank">Hugo</a> theme by <a href="https://github.com/jangworn/hugo-theme-ling" target="_blank">ling</a> <a target="_blank" href="https://beian.miit.gov.cn/">粤ICP备2021017283号-1</a></p>
+</footer>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    document.write(unescape("%3Cspan class='cnzz_stat' id='cnzz_stat_icon_1279318433'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279318433%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </body>
+</html>
