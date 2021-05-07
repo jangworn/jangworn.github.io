@@ -6,7 +6,16 @@
     <description>Recent content on 后会有期</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 30 Sep 2020 11:48:44 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 May 2021 23:40:58 +0000</lastBuildDate><atom:link href="https://www.johnyn.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>golang解析json</title>
+      <link>https://www.johnyn.com/2021/05/03/golang%E8%A7%A3%E6%9E%90json/</link>
+      <pubDate>Mon, 03 May 2021 23:40:58 +0000</pubDate>
+      
+      <guid>https://www.johnyn.com/2021/05/03/golang%E8%A7%A3%E6%9E%90json/</guid>
+      <description>golang解析json常用的方法有2种 定义struct package main import ( &amp;#34;encoding/json&amp;#34; &amp;#34;fmt&amp;#34; ) type Student struct { Name string `json:&amp;#34;Name&amp;#34;` Age int `json:&amp;#34;Age&amp;#34;` Sex string `json:&amp;#34;Sex&amp;#34;` } type Class struct { ClassName string `json:&amp;#34;ClassName&amp;#34;` Students []Student } type School struct { SchoolName string Id int64 `json:&amp;#34;Id&amp;#34;` Class map[string]Class</description>
+    </item>
+    
     <item>
       <title>网站加入搜索引擎实践</title>
       <link>https://www.johnyn.com/2020/09/30/%E7%BD%91%E7%AB%99%E5%8A%A0%E5%85%A5%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%AE%9E%E8%B7%B5/</link>
@@ -41,15 +50,6 @@
       
       <guid>https://www.johnyn.com/2020/06/03/git%E4%BF%AE%E6%94%B9%E5%B7%B2commit%E7%9A%84name%E5%92%8Cemail/</guid>
       <description>拉取要修改的仓库 git clone https://xxx/xxxx.git 进入本地目录 cd xxxx 拉取远程所有分支 git branch -r | grep -v &amp;lsquo;-&amp;gt;&amp;rsquo; | while read remote; do git branch &amp;ndash;track &amp;ldquo;${remote#origin/}&amp;rdquo; &amp;ldquo;$remote&amp;rdquo;; done git fetch &amp;ndash;all git pull &amp;ndash;all 执行修改命令 git filter-branch --env-filter &amp;#39; OLD_EMAIL=&amp;#34;xxx@163.com&amp;#34; OLD_NAME=&amp;#34;xxx@163.com&amp;#34; CORRECT_NAME=&amp;#34;bbbbb&amp;#34; CORRECT_EMAIL=&amp;#34;bbbbb@qq.com&amp;#34; if [ &amp;#34;$GIT_COMMITTER_EMAIL&amp;#34; = &amp;#34;$OLD_EMAIL&amp;#34;</description>
-    </item>
-    
-    <item>
-      <title>golang解析json</title>
-      <link>https://www.johnyn.com/2020/05/03/golang%E8%A7%A3%E6%9E%90json/</link>
-      <pubDate>Sun, 03 May 2020 23:40:58 +0000</pubDate>
-      
-      <guid>https://www.johnyn.com/2020/05/03/golang%E8%A7%A3%E6%9E%90json/</guid>
-      <description>golang解析json常用的方法有2种 定义struct package main import ( &amp;#34;encoding/json&amp;#34; &amp;#34;fmt&amp;#34; ) type Student struct { Name string `json:&amp;#34;Name&amp;#34;` Age int `json:&amp;#34;Age&amp;#34;` Sex string `json:&amp;#34;Sex&amp;#34;` } type Class struct { ClassName string `json:&amp;#34;ClassName&amp;#34;` Students []Student } type School struct { SchoolName string Id int64 `json:&amp;#34;Id&amp;#34;` Class map[string]Class</description>
     </item>
     
     <item>

@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.johnyn.com/tags/go-json-struct/</loc>
+    <lastmod>2021-05-03T23:40:58+00:00</lastmod>
+  </url><url>
+    <loc>https://www.johnyn.com/2021/05/03/golang%E8%A7%A3%E6%9E%90json/</loc>
+    <lastmod>2021-05-03T23:40:58+00:00</lastmod>
+  </url><url>
+    <loc>https://www.johnyn.com/post/</loc>
+    <lastmod>2021-05-03T23:40:58+00:00</lastmod>
+  </url><url>
+    <loc>https://www.johnyn.com/tags/</loc>
+    <lastmod>2021-05-03T23:40:58+00:00</lastmod>
+  </url><url>
+    <loc>https://www.johnyn.com/</loc>
+    <lastmod>2021-05-03T23:40:58+00:00</lastmod>
+  </url><url>
     <loc>https://www.johnyn.com/tags/baidu/</loc>
     <lastmod>2020-09-30T11:48:44+00:00</lastmod>
   </url><url>
     <loc>https://www.johnyn.com/tags/google/</loc>
-    <lastmod>2020-09-30T11:48:44+00:00</lastmod>
-  </url><url>
-    <loc>https://www.johnyn.com/post/</loc>
-    <lastmod>2020-09-30T11:48:44+00:00</lastmod>
-  </url><url>
-    <loc>https://www.johnyn.com/tags/</loc>
-    <lastmod>2020-09-30T11:48:44+00:00</lastmod>
-  </url><url>
-    <loc>https://www.johnyn.com/</loc>
     <lastmod>2020-09-30T11:48:44+00:00</lastmod>
   </url><url>
     <loc>https://www.johnyn.com/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%94%B6%E5%BD%95/</loc>
@@ -52,12 +58,6 @@
   </url><url>
     <loc>https://www.johnyn.com/2020/06/03/git%E4%BF%AE%E6%94%B9%E5%B7%B2commit%E7%9A%84name%E5%92%8Cemail/</loc>
     <lastmod>2020-06-03T23:40:58+00:00</lastmod>
-  </url><url>
-    <loc>https://www.johnyn.com/tags/go-json-struct/</loc>
-    <lastmod>2020-05-03T23:40:58+00:00</lastmod>
-  </url><url>
-    <loc>https://www.johnyn.com/2020/05/03/golang%E8%A7%A3%E6%9E%90json/</loc>
-    <lastmod>2020-05-03T23:40:58+00:00</lastmod>
   </url><url>
     <loc>https://www.johnyn.com/tags/serverless/</loc>
     <lastmod>2020-01-10T16:16:05+00:00</lastmod>
